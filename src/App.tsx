@@ -1,19 +1,50 @@
-import React from 'react';
-// import './App.css';
+import React, { useEffect } from 'react';
+import './App.css';
 import Auth from './components/auth/Auth';
 
-let testProp: string = 'Am I getting passed to the Auth component?'
-let optionalProp: string = 'Yessir!';
+interface AppProps {
+  updateToken: Function
+}
 
-const App: React.FunctionComponent = () => {
+interface AppState {
+  token: string
+  sessionToken: string
+}
+
+class App extends React.Component<AppProps, AppState> {
+  constructor(props: AppProps) {
+    super(props);
+    this.state = {
+      token: " ",
+      sessionToken: " "
+    };
+  }
+  
+  // https://react-typescript-cheatsheet.netlify.app/docs/basic/getting-started/hooks/
+  // useEffect(() => {
+  //   if (localStorage.getItem('token')){
+  //     setSessionToken(localStorage.getItem('token'));
+  //   }
+  // }, [])
+
+  //sets token for app component
+  updateToken = (newToken: string) => {
+    localStorage.setItem('token', newToken);
+    this.setState({
+      token: newToken
+    })
+  }
+
+  render() {
     return (
       <div className="App">
         <div className="App">
           test
-          <Auth testProp={testProp} optionalProp={optionalProp} />
+          <Auth updateToken={this.props.updateToken} />
         </div>
       </div>
     )
   }
+}
 
 export default App;
