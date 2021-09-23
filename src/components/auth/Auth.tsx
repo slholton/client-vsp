@@ -1,77 +1,39 @@
-// User Register and Login Page
-
 import React from 'react';
-import { Button, Form, FormGroup } from 'reactstrap';
+import { Container, Row, Col } from 'reactstrap';
+import Register from './Register';
+import Login from './Login';
 
-type AcceptedProps = {
-    testProp: string,
-    optionalProp?: string
-};
-
+type AuthProp = {
+    updateToken: Function
+  }
+  
 type AuthState = {
-    fname: string,
-    email: string,
-    password: string
-}
- 
-class Auth extends React.Component<AcceptedProps, AuthState> {
-    constructor(props: AcceptedProps) {
+    token: string
+    sessionToken: string
+  }
+
+// change to class
+class Auth extends React.Component<AuthProp, AuthState> {
+    constructor(props: AuthProp) {
         super(props);
         this.state = { 
-            fname: "",
-            email: "",
-            password: ""
-        }
+            token: " ",
+            sessionToken: " "
+        };
     }
-
-    // let handleSubmit = (event) => {
-    //     event.preventDefault();
-    //     fetch('http://localhost:3000/user/register',)
-    // }
-
-    authFname: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-        this.setState({fname: e.currentTarget.value})
-    }
-
-    authEmail: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-        this.setState({email: e.currentTarget.value})
-    }
-
-    authPassword: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-        this.setState({password: e.currentTarget.value})
-    }
-
+    
     render() { 
         return (
-            <div className="main">
-                <div className="registerUser">
-                <h4>Sign Up</h4>
-                <Form>
-                    <FormGroup>
-                    <input type="fname" value={this.state.fname} placeholder="First Name" onChange={this.authFname}></input>
-                    </FormGroup>
-                    <FormGroup>
-                    <input type="email" value={this.state.email} placeholder="Email Address" onChange={this.authEmail}></input>
-                    </FormGroup>
-                    <FormGroup>
-                    <input type="password" value={this.state.password} placeholder="Set Password" onChange={this.authPassword}></input>
-                    </FormGroup>
-                    <Button type="submit">Submit</Button>
-                </Form>    
-                </div>
-                <div className="loginUser">
-                <h4>Log In</h4>
-                <Form>
-                    <FormGroup>
-                    <input type="email" value={this.state.email} placeholder="Email Address" onChange={this.authEmail}></input>
-                    </FormGroup>
-                    <FormGroup>
-                    <input type="password" value={this.state.password} placeholder="Set Password" onChange={this.authPassword}></input>
-                    </FormGroup>
-                    <Button type="submit">Submit</Button>
-                </Form>    
-                </div>
-            </div>
+            <Container className="auth-container">
+            <Row>
+                <Col md="6">
+                    <Register updateToken={this.props.updateToken} />
+                </Col>
+                <Col md="6" className="login-col">
+                    <Login updateToken={this.props.updateToken} />
+                </Col>
+            </Row>
+        </Container>
           );
     }
 }

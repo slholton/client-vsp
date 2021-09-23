@@ -19,7 +19,16 @@ class App extends React.Component<AppProps, AppState> {
       sessionToken: " "
     };
   }
-  
+
+  // double check this
+  useEffect() {
+    if(localStorage.getItem('token')){
+      this.setState({
+        sessionToken: ""
+      })
+    }
+  }
+
   // https://react-typescript-cheatsheet.netlify.app/docs/basic/getting-started/hooks/
   // useEffect(() => {
   //   if (localStorage.getItem('token')){

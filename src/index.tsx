@@ -4,9 +4,27 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+interface IndexProps {
+  updateToken: Function
+}
+
+interface IndexState {
+  token: string
+  sessionToken: string
+}
+
+class index extends React.Component<IndexProps, IndexState> {
+  constructor(props: IndexProps) {
+    super(props);
+    this.state = {
+      token: " ",
+      sessionToken: " "
+    };
+  }
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App updateToken={this.props.updateToken} />
   </React.StrictMode>,
   document.getElementById('root')
 );
