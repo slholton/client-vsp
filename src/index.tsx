@@ -3,30 +3,16 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
-interface IndexProps {
-  updateToken: Function
-}
-
-interface IndexState {
-  token: string
-  sessionToken: string
-}
-
-class index extends React.Component<IndexProps, IndexState> {
-  constructor(props: IndexProps) {
-    super(props);
-    this.state = {
-      token: " ",
-      sessionToken: " "
-    };
-  }
+import { BrowserRouter as Router } from 'react-router-dom'
 
 ReactDOM.render(
   <React.StrictMode>
-    <App updateToken={this.props.updateToken} />
+    <Router>
+    <App />
+  </Router>    
   </React.StrictMode>,
-  document.getElementById('root')
+    document.getElementById('root')
+
 );
 
 // If you want to start measuring performance in your app, pass a function

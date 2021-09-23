@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react';
 import './App.css';
 import Auth from './components/auth/Auth';
+import 'bootstrap/dist/css/bootstrap.min.css'
+
 
 interface AppProps {
-  updateToken: Function
+
 }
 
 interface AppState {
@@ -20,21 +22,14 @@ class App extends React.Component<AppProps, AppState> {
     };
   }
 
-  // double check this
-  useEffect() {
+  // useEffect
+  componentDidMount() {
     if(localStorage.getItem('token')){
       this.setState({
         sessionToken: ""
       })
     }
   }
-
-  // https://react-typescript-cheatsheet.netlify.app/docs/basic/getting-started/hooks/
-  // useEffect(() => {
-  //   if (localStorage.getItem('token')){
-  //     setSessionToken(localStorage.getItem('token'));
-  //   }
-  // }, [])
 
   //sets token for app component
   updateToken = (newToken: string) => {
@@ -49,7 +44,7 @@ class App extends React.Component<AppProps, AppState> {
       <div className="App">
         <div className="App">
           test
-          <Auth updateToken={this.props.updateToken} />
+          <Auth updateToken={this.updateToken} />
         </div>
       </div>
     )
