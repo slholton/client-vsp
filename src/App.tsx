@@ -1,11 +1,9 @@
 import React, { useEffect } from 'react';
-import './App.css';
+import SiteBar from './components/home/Navbar'
 import Auth from './components/auth/Auth';
-import 'bootstrap/dist/css/bootstrap.min.css'
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 interface AppProps {
-
 }
 
 interface AppState {
@@ -22,7 +20,6 @@ class App extends React.Component<AppProps, AppState> {
     };
   }
 
-  // useEffect
   componentDidMount() {
     if(localStorage.getItem('token')){
       this.setState({
@@ -31,7 +28,6 @@ class App extends React.Component<AppProps, AppState> {
     }
   }
 
-  //sets token for app component
   updateToken = (newToken: string) => {
     localStorage.setItem('token', newToken);
     this.setState({
@@ -39,11 +35,16 @@ class App extends React.Component<AppProps, AppState> {
     })
   }
 
+  clearToken = () => {
+    localStorage.clear();
+    this.updateToken(" ")
+  }
+
   render() {
     return (
       <div className="App">
         <div className="App">
-          test
+          <SiteBar clickLogout={this.clearToken} />
           <Auth updateToken={this.updateToken} />
         </div>
       </div>

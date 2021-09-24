@@ -2,6 +2,7 @@ import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import Register from './Register';
 import Login from './Login';
+import Sitebar from '../home/Navbar'
 
 type AuthProp = {
     updateToken: Function
@@ -12,7 +13,6 @@ type AuthState = {
     sessionToken: string
   }
 
-// change to class
 class Auth extends React.Component<AuthProp, AuthState> {
     constructor(props: AuthProp) {
         super(props);

@@ -1,10 +1,9 @@
-import React, { Props } from 'react';
+import React from 'react';
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
-import { createEmitAndSemanticDiagnosticsBuilderProgram } from 'typescript';
 
 type RegisterProp = {
     updateToken: Function
-  }
+}
 
 type RegisterState = {
     fname: string,
@@ -30,7 +29,13 @@ class Register extends React.Component<RegisterProp, RegisterState> {
         e.preventDefault();
         fetch("http://localhost:3000/user/register", {
             method: 'POST',
-            body: JSON.stringify({ user: { fname: this.state.fname, email: this.state.email, password: this.state.password } }),
+            body: JSON.stringify({
+                user: {
+                    fname: this.state.fname,
+                    email: this.state.email,
+                    password: this.state.password
+                }
+            }),
             headers: new Headers({
                 'Content-Type': 'application/json'
             })
@@ -47,18 +52,18 @@ class Register extends React.Component<RegisterProp, RegisterState> {
                 <h1>Register</h1>
                 <Form onSubmit={this.handleSubmit}>
                     <FormGroup>
-                        <Label htmlFor="fname" />
-                        <Input onChange={(e) => this.setState({fname: e.target.value})}
-                            type="text" name="fname" value={this.state.fname} placeholder="First Name" />
+                        <Label htmlFor="fname">First Name </Label>
+                        <Input onChange={(e) => this.setState({ fname: e.target.value })}
+                            type="text" name="fname" value={this.state.fname} />
                     </FormGroup>
                     <FormGroup>
-                        <Label htmlFor="email" />
-                        <Input onChange={(e) => this.setState({email: e.target.value})}
+                        <Label htmlFor="email">Email </Label>
+                        <Input onChange={(e) => this.setState({ email: e.target.value })}
                             type="email" name="email" value={this.state.email} placeholder="Email" />
                     </FormGroup>
                     <FormGroup>
-                        <Label htmlFor="password" />
-                        <Input onChange={(e) => this.setState({password: e.target.value})}
+                        <Label htmlFor="password">Password </Label>
+                        <Input onChange={(e) => this.setState({ password: e.target.value })}
                             type="password" name="password" value={this.state.password} placeholder="Password" />
                     </FormGroup>
                     <Button type="submit">Register</Button>
@@ -69,4 +74,3 @@ class Register extends React.Component<RegisterProp, RegisterState> {
 }
 
 export default Register;
-
