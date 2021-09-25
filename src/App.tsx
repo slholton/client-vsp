@@ -4,6 +4,7 @@ import Auth from './components/auth/Auth';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 interface AppProps {
+
 }
 
 interface AppState {
@@ -37,7 +38,6 @@ class App extends React.Component<AppProps, AppState> {
 
   clearToken = () => {
     localStorage.clear();
-    this.updateToken(" ")
   }
 
   render() {

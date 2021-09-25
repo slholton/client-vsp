@@ -2,7 +2,7 @@ import React from 'react';
 import { Collapse, Navbar, Nav, NavItem, Button, NavbarBrand, NavbarToggler } from 'reactstrap';
 
 interface NavbarProps {
-    clickLogout: Function
+    clickLogout: () => void
 }
 
 interface NavbarState {
@@ -25,10 +25,6 @@ class Sitebar extends React.Component<NavbarProps, NavbarState> {
           })
     }
 
-    // componentWillUnmount() {
-    //     this.props.clickLogout()
-    // }
-
     render() { 
         return (
             <Navbar color="faded" light expand="md">
@@ -37,8 +33,7 @@ class Sitebar extends React.Component<NavbarProps, NavbarState> {
                 <Collapse isOpen={this.state.isOpen} navbar >
                     <Nav className="ml-auto" navbar>
                         <NavItem>
-                            <Button>Logout</Button> 
-                            {/* <Button type="submit" onClick={this.props.clickLogout}>Logout</Button>  */}
+                            <Button onClick={this.props.clickLogout}>Logout</Button> 
                         </NavItem>
                     </Nav>
                 </Collapse>
