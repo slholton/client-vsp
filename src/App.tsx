@@ -1,9 +1,7 @@
 import React from 'react';
 import SiteBar from './components/home/Navbar'
 import Auth from './components/auth/Auth';
-import Videos from './components/videos/Videos';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Planner from './components/videos/Planner';
+import Home from './components/home/Home'
 
 interface AppProps {
 
@@ -46,7 +44,7 @@ class App extends React.Component<AppProps, AppState> {
 
   // protectedViews = () => {
   //   return (this.sessionToken === localStorage.getItem('token') 
-  //   ? <Videos token={this.sessionToken} />
+  //   ? <Home token={this.sessionToken} />
   //   : <Auth updateToken={this.updateToken} />
   //   )}
 

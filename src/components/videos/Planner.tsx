@@ -64,7 +64,7 @@ class Planner extends React.Component<PlannerProps, PlannerState> {
                     {/* <FormGroup>
                         <Label htmlFor="time"> Publish Date </Label>
                         <Input onChange={(e) => this.setState({ publishDate: e.target.value })}
-                            type="date" name="date" dateTime={this.state.publishDate} />
+                            type="date" name="date" publishDate={this.state.publishDate} />
                     </FormGroup> */}
                     <FormGroup>
                         <Label htmlFor="title"> Title </Label>

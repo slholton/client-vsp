@@ -2,14 +2,18 @@
 
 import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
-import Planner from './Planner';
-import Feed from './Feed'
+import Planner from './Planner';  // Creates Videos
+import Feed from './Feed'; // Reads & Deletes Videos
+import VideoEdit from './VideoEdit'; // Updates Videos
 
 interface VideosProps {
     token: string | null
 }
 
 interface VideosState {
+    videos: [],
+    updateActive: false,
+    videoToUpdate: {}
 }
 
 class Videos extends React.Component<VideosProps, VideosState> {
@@ -17,7 +21,9 @@ class Videos extends React.Component<VideosProps, VideosState> {
     constructor(props: VideosProps) {
         super(props);
         this.state = {
-            // video: (" ")
+            videos: ([ ]),
+            updateActive: ( ),
+            videoToUpdate: ({ })
         };
     }
 
@@ -31,8 +37,20 @@ class Videos extends React.Component<VideosProps, VideosState> {
             })
         }).then((res) => res.json())
             .then((videoData) => {
-                this.setState.video(videoData)
+                this.setState.videos(videoData)
             })
+    }
+
+    updateVideo = (video) => {
+        this.setState.videoToUpdate(video)
+    }
+
+    updateOn = () => {
+        this.setState.updateActive(true);
+    }
+
+    updateOff = () => {
+        this.setState.updateActive(false)
     }
 
     componentDidMount() {
@@ -45,12 +63,14 @@ class Videos extends React.Component<VideosProps, VideosState> {
                 <Container>
                     <Row>
                         <Col md="9">
-                            <Feed video={this.video} fetchVideos={this.fetchVideos}
-                            token={this.props.token}>
+                            <Feed video={this.video} updateVideo={this.updateVideo}
+                            updateOn={this.updateOn} fetchVideos={this.fetchVideos} token={this.props.token}>
                         </Col>
                         <Col md="3">
                             <Planner fetchVideos={this.fetchVideos} token={this.props.token} />
                         </Col>
+                        {this.updateActive ? <<VideoEdit videoToUpdate={this.videoToUpdate}
+                            updateOff={this.updateOff} token={this.props.token} fetchVideos={this.fetchVideos}/> : <></>}
                     </Row>
                 </Container>
             </div>

@@ -5,7 +5,8 @@ import { Table, Button } from 'reactstrap';
 
 interface FeedProps {
     token: {},
-    fetchVideos: Function
+    fetchVideos: Function,
+    updateVideo: Function
 }
 
 interface FeedState {
@@ -35,7 +36,7 @@ class Feed extends React.Component<FeedProps, FeedState> {
                     <td>{this.video.categoryId}</td>
                     <td>{this.video.playlist}</td>
                     <td>
-                        <Button>Update Video</Button>
+                        <Button onClick={() => {this.props.updateVideo(this.video); this.props.updateOn()}}>Update Video</Button>
                         <Button onClick={() => {this.deleteVideo(this.video)}}>Delete Video</Button>
                     </td>
                 </tr>
