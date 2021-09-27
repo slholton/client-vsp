@@ -2,7 +2,8 @@
 
 import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
-import BuildList from './BuildList'
+import BuildList from './BuildList';
+import Collections from './Collections';
 
 interface PlaylistProps {
     token: string
@@ -14,6 +15,7 @@ interface PlaylistState {
 }
 
 class Playlists extends React.Component<PlaylistProps, PlaylistState> {
+    playlists: any;
     constructor(props: PlaylistProps) {
         super(props);
         this.state = {
@@ -45,7 +47,8 @@ class Playlists extends React.Component<PlaylistProps, PlaylistState> {
                     <Container>
                         <Row>
                             <Col md="9">
-                                <h2>Add a playlist to see the table.</h2>
+                                <Collections playlists={this.playlists} fetchPlaylists={this.fetchPlaylists}
+                                token={this.props.token} />
                             </Col>
                             <Col md="3">
                                 <BuildList fetchPlaylists={this.fetchPlaylists} token={this.props.token} />
