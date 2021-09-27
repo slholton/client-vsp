@@ -42,6 +42,7 @@ class App extends React.Component<AppProps, AppState> {
     localStorage.clear();
   }
 
+  // HELP!
   // protectedViews = () => {
   //   return (this.sessionToken === localStorage.getItem('token') 
   //   ? <Home token={this.sessionToken} />
@@ -52,7 +53,7 @@ class App extends React.Component<AppProps, AppState> {
      return (
       <div className="App">
         <div className="App">
-          <SiteBar clickLogout={this.clearToken} />
+          <SiteBar clearToken={this.clearToken} />
           {/* {this.protectedViews} */}
         </div>
       </div>

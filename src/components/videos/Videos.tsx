@@ -7,7 +7,7 @@ import Feed from './Feed'; // Reads & Deletes Videos
 import VideoEdit from './VideoEdit'; // Updates Videos
 
 interface VideosProps {
-    token: string | null
+    token: string
 }
 
 interface VideosState {
@@ -21,13 +21,12 @@ class Videos extends React.Component<VideosProps, VideosState> {
     constructor(props: VideosProps) {
         super(props);
         this.state = {
-            videos: ([ ]),
+            videos: ([]),
             updateActive: ( ),
-            videoToUpdate: ({ })
+            videoToUpdate: ({})
         };
     }
 
-    // fetchVideos = (e: { preventDefault: () => void; }) => {
     fetchVideos = () => {
         fetch("http://localhost:3000/videos/mine", {
             method: 'GET',
@@ -59,20 +58,22 @@ class Videos extends React.Component<VideosProps, VideosState> {
 
     render() {
         return (
-            <div>
-                <Container>
-                    <Row>
-                        <Col md="9">
-                            <Feed video={this.video} updateVideo={this.updateVideo}
-                            updateOn={this.updateOn} fetchVideos={this.fetchVideos} token={this.props.token}>
-                        </Col>
-                        <Col md="3">
-                            <Planner fetchVideos={this.fetchVideos} token={this.props.token} />
-                        </Col>
-                        {this.updateActive ? <<VideoEdit videoToUpdate={this.videoToUpdate}
+            <div className="Videos">
+                <div className="Videos">
+                    <Container>
+                        <Row>
+                            <Col md="9">
+                                <Feed video={this.video} updateVideo={this.updateVideo}
+                                    updateOn={this.updateOn} fetchVideos={this.fetchVideos} token={this.props.token}>
+                            </Col>
+                            <Col md="3">
+                                <Planner fetchVideos={this.fetchVideos} token={this.props.token} />
+                            </Col>
+                            {this.updateActive ? << VideoEdit videoToUpdate={this.videoToUpdate}
                             updateOff={this.updateOff} token={this.props.token} fetchVideos={this.fetchVideos}/> : <></>}
-                    </Row>
-                </Container>
+                        </Row>
+                    </Container>
+                </div>
             </div>
         );
     }
