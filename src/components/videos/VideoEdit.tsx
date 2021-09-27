@@ -62,7 +62,7 @@ class VideoEdit extends React.Component<VideoEditProps, VideoEditState> {
                             {/* <FormGroup>
                             <Label htmlFor="time"> Edit Publish Date </Label>
                             <Input onChange={(e) => this.setState({ editPublishDate: e.target.value })}
-                                type="date" name="date" publishDate={this.state.editPublishDate} />
+                                type="date" name="date" value={this.state.editPublishDate} />
                         </FormGroup> */}
                             <FormGroup>
                                 <Label htmlFor="title"> Edit Title </Label>

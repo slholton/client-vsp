@@ -4,13 +4,16 @@ import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import BuildList from './BuildList';
 import Collections from './Collections';
+import PlayUpdate from './PlayUpdate'
 
 interface PlaylistProps {
     token: string
 }
 
 interface PlaylistState {
-    playlists: []
+    playlists: [];
+    updateActive: false,
+    playlistToUpdate: {}
 
 }
 
@@ -36,6 +39,18 @@ class Playlists extends React.Component<PlaylistProps, PlaylistState> {
                 })
         }
 
+        editUpdatePlaylist = (playlist) => {
+            this.setState.playlistToUpdate(playlist)
+        }
+
+        updateOn = () => {
+            this.setState.updateActive(true);
+        }
+
+        updateOff = () => {
+            this.setState.updateActive(false);
+        }
+
         componentDidMount() {
             this.fetchPlaylists();
         }
@@ -47,12 +62,14 @@ class Playlists extends React.Component<PlaylistProps, PlaylistState> {
                     <Container>
                         <Row>
                             <Col md="9">
-                                <Collections playlists={this.playlists} fetchPlaylists={this.fetchPlaylists}
-                                token={this.props.token} />
+                                <Collections playlists={this.playlists} editUpdatePlaylist={this.editUpdatePlaylist} 
+                                updateOn={this.updateOn} fetchPlaylists={this.fetchPlaylists} token={this.props.token} />
                             </Col>
                             <Col md="3">
                                 <BuildList fetchPlaylists={this.fetchPlaylists} token={this.props.token} />
                             </Col>
+                        {updateActive ? <PlayUpdate playlistToUpdate={this.playlistToUpdate}
+                        updateOff={this.updateOff} token={this.props.token} fetchPlaylists={this.fetchPlaylists} /> : <> </>}
                         </Row>
                     </Container>
                 </div>

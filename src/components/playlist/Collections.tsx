@@ -47,7 +47,7 @@ class Collections extends React.Component<CollectionProps, CollectionState> {
                     <td>{playlist.description}</td>
                     <td>{playlist.status}</td>
                     <td>
-                        <Button onClick={() => { this.props.updatePlaylist(this.playlist); this.props.updateOn() }}>Update Playlist</Button>
+                        <Button onClick={() => { this.props.updatePlaylist(this.playlist); this.props.updateOn()}}>Update Playlist</Button>
                         <Button onClick={() => { this.deletePlaylist(playlist) }}>Delete Playlist</Button>
                     </td>
                 </tr>
