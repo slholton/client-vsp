@@ -7,7 +7,8 @@ import { Container, Row } from 'reactstrap'
 import Sitebar from './Navbar'
 
 interface HomeProps {
-    clearToken: Function 
+    clearToken: Function,
+    token: string 
 }
 
 interface HomeState {
@@ -25,13 +26,13 @@ class Home extends React.Component<HomeProps, HomeState> {
     render() {
         return (
             <div>
-                <Sitebar clickLogout={this.props.clearToken()} />
+                <Sitebar clearToken={this.props.clearToken()} />
                 <Container>
                     <Row>
-                        {/* <Videos /> */}
+                        <Videos token={this.props.token} />
                     </Row>
                     <Row>
-                        <Playlists />
+                        <Playlists token={this.props.token} />
                     </Row>
                 </Container>
             </div>

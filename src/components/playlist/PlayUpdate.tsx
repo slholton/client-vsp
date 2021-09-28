@@ -53,7 +53,7 @@ class PlayUpdate extends React.Component<PlayProps, PlayState> {
                 <Modal isOpen={true}>
                     <ModalHeader>Update Your Playlist</ModalHeader>
                     <ModalBody>
-                        <Form>
+                        <Form onSubmit={this.playlistUpdate}>
                             {/* <FormGroup>
                                 <Label htmlFor="time"> Edit Publish Date </Label>
                                 <Input onChange={(e) => this.setState({ editPublishDate: e.target.value })}
