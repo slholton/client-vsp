@@ -1,5 +1,3 @@
-// workoutIndex.js - SPLASH PAGE FOR VIDEO
-
 import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import Planner from './Planner';  // Creates Videos
@@ -12,17 +10,18 @@ interface VideosProps {
 
 interface VideosState {
     videos: [],
-    updateActive: false,
-    videoToUpdate: {}
+    updateActive: true | false,
+    videoToUpdate: object
 }
 
 class Videos extends React.Component<VideosProps, VideosState> {
-    video: any;
+    updateActive: any;
+    videoToUpdate: any;
     constructor(props: VideosProps) {
         super(props);
         this.state = {
-            videos: ([]),
-            updateActive: ( ),
+            videos: [],
+            updateActive: (false),
             videoToUpdate: ({})
         };
     }
@@ -36,20 +35,28 @@ class Videos extends React.Component<VideosProps, VideosState> {
             })
         }).then((res) => res.json())
             .then((videoData) => {
-                this.setState.videos(videoData)
+                this.setState({
+                    videos: videoData
+            })
             })
     }
 
-    updateVideo = (video) => {
-        this.setState.videoToUpdate(video)
+    updateVideo = (video: any) => {
+        this.setState({
+            videoToUpdate: video
+        })
     }
 
     updateOn = () => {
-        this.setState.updateActive(true);
+        this.setState({
+            updateActive: true
+        });
     }
 
     updateOff = () => {
-        this.setState.updateActive(false)
+        this.setState({
+            updateActive: false
+        });
     }
 
     componentDidMount() {
@@ -63,14 +70,15 @@ class Videos extends React.Component<VideosProps, VideosState> {
                     <Container>
                         <Row>
                             <Col md="9">
-                                <Feed video={this.video} updateVideo={this.updateVideo}
-                                    updateOn={this.updateOn} fetchVideos={this.fetchVideos} token={this.props.token}>
+                                <Feed videos={this.state.videos} updateVideo={this.updateVideo}
+                                    updateOn={this.updateOn} fetchVideos={this.fetchVideos} token={this.props.token} />
+                                
                             </Col>
                             <Col md="3">
                                 <Planner fetchVideos={this.fetchVideos} token={this.props.token} />
                             </Col>
-                            {this.updateActive ? << VideoEdit videoToUpdate={this.videoToUpdate}
-                            updateOff={this.updateOff} token={this.props.token} fetchVideos={this.fetchVideos}/> : <></>}
+                            {this.updateActive ? <VideoEdit updateVideo={this.videoToUpdate}
+                            updateOff={this.updateActive.updateOff} token={this.props.token} fetchVideos={this.fetchVideos} videoToUpdate={this.videoToUpdate} /> : <></> }
                         </Row>
                     </Container>
                 </div>

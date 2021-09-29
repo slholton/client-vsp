@@ -3,12 +3,12 @@ import React from 'react';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 interface PlannerProps {
-    token: {},
+    token: string,
     fetchVideos: Function    
 }
  
 interface PlannerState {
-    publishDate: Date,
+    publishDate: string,
     title: string,
     description: string,
     categoryId: string,
@@ -19,7 +19,7 @@ class Planner extends React.Component<PlannerProps, PlannerState> {
     constructor(props: PlannerProps) {
         super(props);
         this.state = { 
-            publishDate: new Date,
+            publishDate: " ",
             title: " ",
             description: " ",
             categoryId: " ",
@@ -47,11 +47,21 @@ class Planner extends React.Component<PlannerProps, PlannerState> {
         }).then(
             (res) => res.json()
         ).then((videoData) => {
-            // this.setState.publishDate();
-            // this.setState.title(" ");
-            // this.setState.description(" ");
-            // this.setState.categoryId(" ");
-            // this.setState.playlist(" ");
+            this.setState({
+                publishDate: " " 
+            });
+            this.setState({
+                title: " "
+            })
+            this.setState({
+                description: " "
+            });
+            this.setState({
+                categoryId: " "
+            });
+            this.setState({
+                playlist: " "
+            });
             this.props.fetchVideos(videoData)
         })
     }
@@ -61,11 +71,11 @@ class Planner extends React.Component<PlannerProps, PlannerState> {
             <div>
                 <h3>Schedule Your Video Content </h3>
                 <Form onSubmit={this.handleSubmit}>
-                    {/* <FormGroup>
-                        <Label htmlFor="time"> Publish Date </Label>
+                    <FormGroup>
+                        <Label htmlFor="date"> Publish Date </Label>
                         <Input onChange={(e) => this.setState({ publishDate: e.target.value })}
-                            type="date" name="date" publishDate={this.state.publishDate} />
-                    </FormGroup> */}
+                            type="text" name="publishDate" publishDate={this.state.publishDate} />
+                    </FormGroup>
                     <FormGroup>
                         <Label htmlFor="title"> Title </Label>
                         <Input onChange={(e) => this.setState({ title: e.target.value })}

@@ -38,7 +38,3 @@ class Auth extends React.Component<AuthProp, AuthState> {
 }
  
 export default Auth;
-
-// irm + TAB = import React
-// ccc + TAB = create class component
-// fetch() from server

@@ -3,7 +3,7 @@ import React from 'react';
 import { Table, Button } from 'reactstrap';
 
 interface CollectionProps {
-    token: {},
+    token: string,
     fetchPlaylists: Function,
     updatePlaylist: Function
 }

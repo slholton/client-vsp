@@ -1,11 +1,12 @@
-// Workout Table
 import React from "react";
 import { Table, Button } from 'reactstrap';
 
 interface FeedProps {
-    token: {},
+    videos: [],
+    token: string,
     fetchVideos: Function,
-    updateVideo: Function
+    updateVideo: Function,
+    updateOn: () => void
 }
 
 interface FeedState {
@@ -25,14 +26,14 @@ class Feed extends React.Component<FeedProps, FeedState> {
         fetch(`http://localhost:3000/videos/delete/${video.id}`, {
             method: 'DELETE',
             headers: new Headers({
-                // 'Content-Type': 'application/json',
-                // 'Authorization': this.props.token
+                'Content-Type': 'application/json',
+                'Authorization': this.props.token
             })
         }).then(() => this.props.fetchVideos())
     }
 
     videoMapper = () => {
-        return this.props.fetchVideos.map((video: {
+        return this.props.fetchVideos((_video: {
             id: any;
             publishDate?: any;
             title?: any;
@@ -49,7 +50,7 @@ class Feed extends React.Component<FeedProps, FeedState> {
                     <td>{this.video.categoryId}</td>
                     <td>{this.video.playlist}</td>
                     <td>
-                        <Button onClick={() => { this.props.updateVideo(this.video); this.props.updateOn() }}>Update Video</Button>
+                        <Button onClick={() => { this.props.updateVideo(this.video); this.props.updateOn }}>Update Video</Button>
                         <Button onClick={() => { this.deleteVideo(this.video) }}>Delete Video</Button>
                     </td>
                 </tr>

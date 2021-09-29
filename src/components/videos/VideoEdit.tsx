@@ -1,16 +1,16 @@
-// updating (PUT) videos
-
 import React from 'react';
 import { Button, Form, FormGroup, Label, Input, Modal, ModalHeader, ModalBody } from 'reactstrap';
 
 interface VideoEditProps {
-    updateActive: false,
     fetchVideos: Function,
-    updateOff: false
+    token: string,
+    updateVideo: Function,
+    updateOff: () => void,
+    videoToUpdate: object
 }
 
 interface VideoEditState {
-    editPublishDate: Date,
+    editPublishDate: string,
     editTitle: string,
     editDescription: string,
     editCategoryId: string,
@@ -21,7 +21,7 @@ class VideoEdit extends React.Component<VideoEditProps, VideoEditState> {
     constructor(props: VideoEditProps) {
         super(props);
         this.state = {
-            editPublishDate: new Date,
+            editPublishDate: " ",
             editTitle: " ",
             editDescription: " ",
             editCategoryId: " ",
@@ -29,9 +29,9 @@ class VideoEdit extends React.Component<VideoEditProps, VideoEditState> {
         };
     }
 
-    videoUpdate = (e: React.FormEvent, entry: { id: any; }) => {
+    videoUpdate = (e: React.FormEvent, videoToUpdate: { id: any }) => {
         e.preventDefault();
-        fetch(`http://localhost:3000/videos/update/${entry.id}`, {
+        fetch(`http://localhost:3000/videos/update/${videoToUpdate.id}`, {
             method: 'PUT',
             body: JSON.stringify({
                 video: {
@@ -44,7 +44,7 @@ class VideoEdit extends React.Component<VideoEditProps, VideoEditState> {
             }),
             headers: new Headers({
                 'Content-Type': 'application/json',
-                'Authorization': this.props.token
+                'Authorization': `Bearer ${this.props.token}`
             })
         }).then((res) => {
             this.props.fetchVideos();
@@ -59,11 +59,11 @@ class VideoEdit extends React.Component<VideoEditProps, VideoEditState> {
                     <ModalHeader>Update A Video</ModalHeader>
                     <ModalBody>
                         <Form onSubmit={this.videoUpdate}>
-                            {/* <FormGroup>
-                            <Label htmlFor="time"> Edit Publish Date </Label>
-                            <Input onChange={(e) => this.setState({ editPublishDate: e.target.value })}
-                                type="date" name="date" value={this.state.editPublishDate} />
-                        </FormGroup> */}
+                            <FormGroup>
+                                <Label htmlFor="date"> Edit Publish Date </Label>
+                                <Input onChange={(e) => this.setState({ editPublishDate: e.target.value })}
+                                    type="text" name="editPublishDate" value={this.state.editPublishDate} />
+                            </FormGroup>
                             <FormGroup>
                                 <Label htmlFor="title"> Edit Title </Label>
                                 <Input onChange={(e) => this.setState({ editTitle: e.target.value })}
