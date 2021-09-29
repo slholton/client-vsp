@@ -29,9 +29,9 @@ class VideoEdit extends React.Component<VideoEditProps, VideoEditState> {
         };
     }
 
-    videoUpdate = (e: React.FormEvent, videoToUpdate: { id: any }) => {
+    handleVideoUpdate = (e: React.FormEvent) => {
         e.preventDefault();
-        fetch(`http://localhost:3000/videos/update/${videoToUpdate.id}`, {
+        fetch(`http://localhost:3000/videos/update/${this.props.videoToUpdate}`, {
             method: 'PUT',
             body: JSON.stringify({
                 video: {
@@ -58,7 +58,7 @@ class VideoEdit extends React.Component<VideoEditProps, VideoEditState> {
                 <Modal isOpen={true}>
                     <ModalHeader>Update A Video</ModalHeader>
                     <ModalBody>
-                        <Form onSubmit={this.videoUpdate}>
+                        <Form onSubmit={this.handleVideoUpdate}>
                             <FormGroup>
                                 <Label htmlFor="date"> Edit Publish Date </Label>
                                 <Input onChange={(e) => this.setState({ editPublishDate: e.target.value })}
