@@ -33,7 +33,7 @@ class Feed extends React.Component<FeedProps, FeedState> {
     }
 
     videoMapper = () => {
-        return this.props.fetchVideos((_video: {
+        return this.props.fetchVideos((video: {
             id: any;
             publishDate?: any;
             title?: any;
@@ -43,14 +43,14 @@ class Feed extends React.Component<FeedProps, FeedState> {
         }, index: React.Key | null | undefined) => {
             return (
                 <tr key={index}>
-                    <th scope="row">{this.video.id}</th>
+                    <th scope="row">{video.id}</th>
                     <td>{this.video.publishDate}</td>
                     <td>{this.video.title}</td>
                     <td>{this.video.description}</td>
                     <td>{this.video.categoryId}</td>
                     <td>{this.video.playlist}</td>
                     <td>
-                        <Button onClick={() => { this.props.updateVideo(this.video); this.props.updateOn }}>Update Video</Button>
+                        <Button onClick={() => { this.props.updateVideo(this.video); this.props.updateOn() }}>Update Video</Button>
                         <Button onClick={() => { this.deleteVideo(this.video) }}>Delete Video</Button>
                     </td>
                 </tr>
@@ -67,7 +67,7 @@ class Feed extends React.Component<FeedProps, FeedState> {
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Publish Date</th>
+                            <th>Video Publish Date</th>
                             <th>Title</th>
                             <th>Description</th>
                             <th>Category</th>

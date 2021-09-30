@@ -1,8 +1,11 @@
 import React from 'react';
 import { Collapse, Navbar, Nav, NavItem, Button, NavbarBrand, NavbarToggler } from 'reactstrap';
+import Login from '../auth/Login';
+import Register from '../auth/Register'
 
 interface NavbarProps {
-    clearToken: () => void
+    clearToken: () => void,
+    updateToken: Function
 }
 
 interface NavbarState {
@@ -27,6 +30,8 @@ class Sitebar extends React.Component<NavbarProps, NavbarState> {
 
     render() { 
         return (
+            <div className="Navbar">
+            <div className="Navbar"> 
             <Navbar color="faded" light expand="md">
                 <NavbarBrand href="/">Virtual Studio Planner</NavbarBrand>
                 <NavbarToggler onClick={this.toggle} />
@@ -38,6 +43,10 @@ class Sitebar extends React.Component<NavbarProps, NavbarState> {
                     </Nav>
                 </Collapse>
             </Navbar>
+                <Register updateToken={this.props.updateToken} />
+                    <Login updateToken={this.props.updateToken} />
+            </div>
+            </div>
           );
     }
 }

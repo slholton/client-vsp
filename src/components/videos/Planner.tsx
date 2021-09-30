@@ -1,4 +1,3 @@
-// Workout Create
 import React from 'react';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
@@ -72,7 +71,7 @@ class Planner extends React.Component<PlannerProps, PlannerState> {
                 <h3>Schedule Your Video Content </h3>
                 <Form onSubmit={this.handleSubmit}>
                     <FormGroup>
-                        <Label htmlFor="date"> Publish Date </Label>
+                        <Label htmlFor="date"> Video Publish Date </Label>
                         <Input onChange={(e) => this.setState({ publishDate: e.target.value })}
                             type="text" name="publishDate" publishDate={this.state.publishDate} />
                     </FormGroup>

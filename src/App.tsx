@@ -48,7 +48,7 @@ class App extends React.Component<AppProps, AppState> {
      return (
       <div className="App">
         <div className="App">
-          <SiteBar clearToken={this.clearToken} />
+          <SiteBar clearToken={this.clearToken} updateToken={this.updateToken} />
           {this.protectedViews}
         </div>
       </div>

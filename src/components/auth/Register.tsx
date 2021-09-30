@@ -21,10 +21,8 @@ class Register extends React.Component<RegisterProp, RegisterState> {
         };
     }
 
-    // modeled from https://reactjs.org/docs/faq-ajax.html
     componentDidMount() { }
 
-    // https://react-typescript-cheatsheet.netlify.app/docs/basic/getting-started/forms_and_events/
     handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         fetch("http://localhost:3000/user/register", {
@@ -46,31 +44,31 @@ class Register extends React.Component<RegisterProp, RegisterState> {
         })
     }
 
-    render() {
-        return (
-            <div>
-                <h1>Register</h1>
-                <Form onSubmit={this.handleSubmit}>
-                    <FormGroup>
-                        <Label htmlFor="fname">First Name </Label>
-                        <Input onChange={(e) => this.setState({ fname: e.target.value })}
-                            type="text" name="fname" value={this.state.fname} />
-                    </FormGroup>
-                    <FormGroup>
-                        <Label htmlFor="email">Email </Label>
-                        <Input onChange={(e) => this.setState({ email: e.target.value })}
-                            type="email" name="email" value={this.state.email} />
-                    </FormGroup>
-                    <FormGroup>
-                        <Label htmlFor="password">Password </Label>
-                        <Input onChange={(e) => this.setState({ password: e.target.value })}
-                            type="password" name="password" value={this.state.password} />
-                    </FormGroup>
-                    <Button type="submit">Register</Button>
-                </Form>
-            </div>
-        );
-    }
+render() {
+    return (
+        <div>
+            <h1>Register</h1>
+            <Form onSubmit={this.handleSubmit}>
+                <FormGroup>
+                    <Label htmlFor="fname">First Name </Label>
+                    <Input onChange={(e) => this.setState({ fname: e.target.value })}
+                        type="text" name="fname" value={this.state.fname} />
+                </FormGroup>
+                <FormGroup>
+                    <Label htmlFor="email">Email </Label>
+                    <Input onChange={(e) => this.setState({ email: e.target.value })}
+                        type="email" name="email" value={this.state.email} />
+                </FormGroup>
+                <FormGroup>
+                    <Label htmlFor="password">Password </Label>
+                    <Input onChange={(e) => this.setState({ password: e.target.value })}
+                        type="password" name="password" value={this.state.password} />
+                </FormGroup>
+                <Button type="submit">Register</Button>
+            </Form>
+        </div>
+    );
+}
 }
 
 export default Register;

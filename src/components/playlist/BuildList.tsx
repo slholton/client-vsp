@@ -1,13 +1,13 @@
-// Workout Create
 import React from 'react';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap'
 
 interface ListProps {
-    
+    token: string,
+    fetchPlaylists: Function 
 }
  
 interface ListState {
-    publishDate: Date,
+    publishDate: string,
     title: string,
     description: string,
     status: string    
@@ -17,7 +17,7 @@ class BuildList extends React.Component<ListProps, ListState> {
     constructor(props: ListProps) {
         super(props);
         this.state = {
-            publishDate: new Date,
+            publishDate: " ",
             title: " ",
             description: " ",
             status: " "  
@@ -42,11 +42,19 @@ class BuildList extends React.Component<ListProps, ListState> {
             })
         }).then((res) => res.json())
         .then((playlistData) => {
-            // this.setState.publishDate( ),
-            // this.setState.title(''),
-            // this.setState.description(''),
-            // this.setState.status(''),
-            // this.props.fetchPlaylists(playlistData.sessionToken)
+            this.setState({
+                publishDate: " "
+            });
+            this.setState({
+                title: " "
+            });
+            this.setState({
+                description: " "
+            });
+            this.setState({
+                status: " "
+            })
+            this.props.fetchPlaylists(playlistData)
         })
     }
 
@@ -55,11 +63,11 @@ class BuildList extends React.Component<ListProps, ListState> {
             <div>
                 <h3>Create a Playlist</h3>
                 <Form onSubmit={this.handleSubmit}>
-                    {/* <FormGroup>
-                        <Label htmlFor="time"> Publish Date </Label>
+                    <FormGroup>
+                        <Label htmlFor="date"> Playlist Publish Date </Label>
                         <Input onChange={(e) => this.setState({ publishDate: e.target.value })}
-                            type="date" name="date" publishDate={this.state.publishDate} />
-                    </FormGroup> */}
+                            type="text" name="publishDate" publishDate={this.state.publishDate} />
+                    </FormGroup>
                     <FormGroup>
                         <Label htmlFor="title"> Title </Label>
                         <Input onChange={(e) => this.setState({ title: e.target.value })}

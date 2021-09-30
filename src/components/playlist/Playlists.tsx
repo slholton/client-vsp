@@ -1,10 +1,8 @@
-// workoutIndex.js - SPLASH PAGE FOR VIDEO
-
 import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
-import BuildList from './BuildList';
-import Collections from './Collections';
-import PlayUpdate from './PlayUpdate'
+import BuildList from './BuildList';  // Creates Playlists
+import Collections from './Collections'; // Reads & Deletes Playlists
+import PlayUpdate from './PlayUpdate' // Updates Playlists
 
 interface PlaylistProps {
     token: string
@@ -12,17 +10,20 @@ interface PlaylistProps {
 
 interface PlaylistState {
     playlists: [];
-    updateActive: false,
-    playlistToUpdate: {}
+    updateActive: true | false,
+    playlistToUpdate: object
 
 }
 
 class Playlists extends React.Component<PlaylistProps, PlaylistState> {
-    playlists: any;
+    playlistToUpdate: any;
+    updateActive: any;
     constructor(props: PlaylistProps) {
         super(props);
         this.state = {
-            playlists: ([])
+            playlists: [],
+            updateActive: (false),
+            playlistToUpdate: ({})
         };
     }
 
@@ -35,20 +36,28 @@ class Playlists extends React.Component<PlaylistProps, PlaylistState> {
                 })
             }).then((res) => res.json())
                 .then((playlistData) => {
-                    this.setState.playlists(playlistData)
+                    this.setState({
+                        playlists: playlistData
                 })
+            })
         }
 
-        editUpdatePlaylist = (playlist) => {
-            this.setState.playlistToUpdate(playlist)
+        updatePlaylist = (playlist: any) => {
+            this.setState({
+                playlistToUpdate: playlist
+            })
         }
 
         updateOn = () => {
-            this.setState.updateActive(true);
+            this.setState({
+                updateActive: true
+            });
         }
 
         updateOff = () => {
-            this.setState.updateActive(false);
+            this.setState({
+                updateActive: false
+            });
         }
 
         componentDidMount() {
@@ -62,14 +71,14 @@ class Playlists extends React.Component<PlaylistProps, PlaylistState> {
                     <Container>
                         <Row>
                             <Col md="9">
-                                <Collections playlists={this.playlists} editUpdatePlaylist={this.editUpdatePlaylist} 
+                                <Collections playlists={this.state.playlists} updatePlaylist={this.updatePlaylist} 
                                 updateOn={this.updateOn} fetchPlaylists={this.fetchPlaylists} token={this.props.token} />
                             </Col>
                             <Col md="3">
                                 <BuildList fetchPlaylists={this.fetchPlaylists} token={this.props.token} />
                             </Col>
-                        {updateActive ? <PlayUpdate playlistToUpdate={this.playlistToUpdate}
-                        updateOff={this.updateOff} token={this.props.token} fetchPlaylists={this.fetchPlaylists} /> : <> </>}
+                        {this.updateActive ? <PlayUpdate updatePlaylist={this.playlistToUpdate} updateOff={this.updateActive.updateOff} 
+                        token={this.props.token} fetchPlaylists={this.fetchPlaylists} playlistToUpdate={this.playlistToUpdate} /> : <> </>}
                         </Row>
                     </Container>
                 </div>

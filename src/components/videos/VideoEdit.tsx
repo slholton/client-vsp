@@ -60,12 +60,12 @@ class VideoEdit extends React.Component<VideoEditProps, VideoEditState> {
                     <ModalBody>
                         <Form onSubmit={this.handleVideoUpdate}>
                             <FormGroup>
-                                <Label htmlFor="date"> Edit Publish Date </Label>
+                                <Label htmlFor="date"> Edit Video Publish Date </Label>
                                 <Input onChange={(e) => this.setState({ editPublishDate: e.target.value })}
                                     type="text" name="editPublishDate" value={this.state.editPublishDate} />
                             </FormGroup>
                             <FormGroup>
-                                <Label htmlFor="title"> Edit Title </Label>
+                                <Label htmlFor="title"> Edit Video Title </Label>
                                 <Input onChange={(e) => this.setState({ editTitle: e.target.value })}
                                     type="text" name="title" value={this.state.editTitle} />
                             </FormGroup>
@@ -88,7 +88,7 @@ class VideoEdit extends React.Component<VideoEditProps, VideoEditState> {
                                 <Input onChange={(e) => this.setState({ editPlaylist: e.target.value })}
                                     type="text" name="date" value={this.state.editPlaylist} />
                             </FormGroup>
-                            <Button type="submit">Submit Updates</Button>
+                            <Button type="submit">Update Video</Button>
                         </Form>
                     </ModalBody>
                 </Modal>

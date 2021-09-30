@@ -1,11 +1,12 @@
-// Workout Table
-import React from 'react';
+import React from "react";
 import { Table, Button } from 'reactstrap';
 
 interface CollectionProps {
+    playlists: [],
     token: string,
     fetchPlaylists: Function,
-    updatePlaylist: Function
+    updatePlaylist: Function,
+    updateOn: () => void
 }
 
 interface CollectionState {
@@ -25,14 +26,14 @@ class Collections extends React.Component<CollectionProps, CollectionState> {
         fetch(`http://localhost:3000/playlists/delete/${playlist.id}`, {
             method: 'DELETE',
             headers: new Headers({
-                // 'Content-Type': 'application/json',
-                // 'Authorization': this.props.token
+                'Content-Type': 'application/json',
+                'Authorization': this.props.token
             })
         }).then(() => this.props.fetchPlaylists())
     }
 
     playlistMapper = () => {
-        return this.props.fetchPlaylists.map((playlist: {
+        return this.props.fetchPlaylists((playlist: {
             id: any;
             publishDate?: any;
             title?: any;
@@ -42,10 +43,10 @@ class Collections extends React.Component<CollectionProps, CollectionState> {
             return (
                 <tr key={index}>
                     <th scope="row">{playlist.id}</th>
-                    <td>{playlist.publishDate}</td>
-                    <td>{playlist.title}</td>
-                    <td>{playlist.description}</td>
-                    <td>{playlist.status}</td>
+                    <td>{this.playlist.publishDate}</td>
+                    <td>{this.playlist.title}</td>
+                    <td>{this.playlist.description}</td>
+                    <td>{this.playlist.status}</td>
                     <td>
                         <Button onClick={() => { this.props.updatePlaylist(this.playlist); this.props.updateOn()}}>Update Playlist</Button>
                         <Button onClick={() => { this.deletePlaylist(playlist) }}>Delete Playlist</Button>
@@ -64,7 +65,7 @@ class Collections extends React.Component<CollectionProps, CollectionState> {
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Publish Date</th>
+                            <th>Playlist Publish Date</th>
                             <th>Title</th>
                             <th>Description</th>
                             <th>Playlist Privacy</th>
