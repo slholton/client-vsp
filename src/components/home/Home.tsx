@@ -2,6 +2,7 @@ import React from 'react'
 import Videos from '../videos/Videos'
 import Playlists from '../playlist/Playlists'
 import { Container, Row } from 'reactstrap'
+
 // import Sitebar from './Navbar'
 
 interface HomeProps {
@@ -24,16 +25,18 @@ class Home extends React.Component<HomeProps, HomeState> {
 
     render() {
         return (
-            <div>
-          {/* <Sitebar clearToken={this.props.clearToken} updateToken={this.props.updateToken} /> */}
-                <Container>
-                    <Row>
-                        <Videos token={this.props.token} />
-                    </Row>
-                    <Row>
-                        <Playlists token={this.props.token} />
-                    </Row>
-                </Container>
+            <div className="home-main">
+                <div className="home-background">
+                    {/* <Sitebar clearToken={this.props.clearToken} updateToken={this.props.updateToken} /> */}
+                    <Container>
+                        <Row>
+                            <Videos token={this.props.token} />
+                        </Row>
+                        <Row>
+                            <Playlists token={this.props.token} />
+                        </Row>
+                    </Container>
+                </div>
             </div>
         );
     }
