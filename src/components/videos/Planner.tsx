@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import APIURL from '../../helpers/environment'
 
 interface PlannerProps {
     token: string,
@@ -28,7 +29,7 @@ class Planner extends React.Component<PlannerProps, PlannerState> {
 
     handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        fetch("http://localhost:3000/videos/insert", {
+        fetch(`${APIURL}/videos/insert`, {
             method: 'POST',
             body: JSON.stringify({
                 video: {

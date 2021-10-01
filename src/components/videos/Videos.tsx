@@ -3,6 +3,7 @@ import { Container, Row, Col } from 'reactstrap';
 import Planner from './Planner';  // Creates Videos
 import Feed from './Feed'; // Reads & Deletes Videos
 import VideoEdit from './VideoEdit'; // Updates Videos
+import APIURL from '../../helpers/environment'
 
 interface VideosProps {
     token: string
@@ -27,7 +28,7 @@ class Videos extends React.Component<VideosProps, VideosState> {
     }
 
     fetchVideos = () => {
-        fetch("http://localhost:3000/videos/mine", {
+        fetch(`${APIURL}/videos/mine`, {
             method: 'GET',
             headers: new Headers({
                 'Content-Type': 'application/json',

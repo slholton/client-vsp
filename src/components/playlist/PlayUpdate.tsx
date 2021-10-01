@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Form, FormGroup, Label, Input, Modal, ModalHeader, ModalBody } from 'reactstrap';
+import APIURL from '../../helpers/environment'
 
 interface PlaylistEditProps {
     fetchPlaylists: Function,
@@ -29,7 +30,7 @@ class PlayUpdate extends React.Component<PlaylistEditProps, PlaylistEditState> {
 
     handlePlaylistUpdate = (e: React.FormEvent) => {
         e.preventDefault();
-        fetch(`http://localhost:3000/playlists/update/${this.props.playlistToUpdate}`, {
+        fetch(`${APIURL}/playlists/update/${this.props.playlistToUpdate}`, {
             method: 'PUT',
             body: JSON.stringify({
                 playlist: {

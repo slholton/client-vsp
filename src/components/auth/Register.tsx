@@ -1,5 +1,6 @@
 import React from 'react';
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
+import APIURL from '../../helpers/environment'
 
 type RegisterProp = {
     updateToken: Function
@@ -25,7 +26,7 @@ class Register extends React.Component<RegisterProp, RegisterState> {
 
     handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        fetch("http://localhost:3000/user/register", {
+        fetch(`${APIURL}/user/register`, {
             method: "POST",
             body: JSON.stringify({
                 user: {

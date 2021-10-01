@@ -1,5 +1,6 @@
 import React from 'react';
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap'
+import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import APIURL from '../../helpers/environment'
 
 interface ListProps {
     token: string,
@@ -26,7 +27,7 @@ class BuildList extends React.Component<ListProps, ListState> {
 
     handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        fetch("http://localhost:3000/playlists/insert", {
+        fetch(`${APIURL}/playlists/insert`, {
             method: 'POST',
             body: JSON.stringify({
                 playlist: {

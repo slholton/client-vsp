@@ -1,5 +1,6 @@
 import React from "react";
 import { Table, Button } from 'reactstrap';
+import APIURL from '../../helpers/environment'
 
 interface FeedProps {
     videos: [],
@@ -23,7 +24,7 @@ class Feed extends React.Component<FeedProps, FeedState> {
     }
 
     deleteVideo = (video: { id: any; }) => {
-        fetch(`http://localhost:3000/videos/delete/${video.id}`, {
+        fetch(`${APIURL}/videos/delete/${video.id}`, {
             method: 'DELETE',
             headers: new Headers({
                 'Content-Type': 'application/json',

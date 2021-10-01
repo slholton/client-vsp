@@ -3,6 +3,7 @@ import { Container, Row, Col } from 'reactstrap';
 import BuildList from './BuildList';  // Creates Playlists
 import Collections from './Collections'; // Reads & Deletes Playlists
 import PlayUpdate from './PlayUpdate' // Updates Playlists
+import APIURL from '../../helpers/environment'
 
 interface PlaylistProps {
     token: string
@@ -28,7 +29,7 @@ class Playlists extends React.Component<PlaylistProps, PlaylistState> {
     }
 
         fetchPlaylists = () => {
-            fetch("http://localhost:3000/playlists/mine", {
+            fetch(`${APIURL}/playlists/mine`, {
                 method: 'GET',
                 headers: new Headers({
                     'Content-Type': 'application/json',

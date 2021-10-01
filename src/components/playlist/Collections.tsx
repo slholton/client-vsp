@@ -1,5 +1,6 @@
 import React from "react";
 import { Table, Button } from 'reactstrap';
+import APIURL from '../../helpers/environment'
 
 interface CollectionProps {
     playlists: [],
@@ -23,7 +24,7 @@ class Collections extends React.Component<CollectionProps, CollectionState> {
     }
 
     deletePlaylist = (playlist: { id: any; }) => {
-        fetch(`http://localhost:3000/playlists/delete/${playlist.id}`, {
+        fetch(`${APIURL}/playlists/delete/${playlist.id}`, {
             method: 'DELETE',
             headers: new Headers({
                 'Content-Type': 'application/json',

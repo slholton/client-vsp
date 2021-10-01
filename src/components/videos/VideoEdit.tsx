@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Form, FormGroup, Label, Input, Modal, ModalHeader, ModalBody } from 'reactstrap';
+import APIURL from '../../helpers/environment'
 
 interface VideoEditProps {
     fetchVideos: Function,
@@ -31,7 +32,7 @@ class VideoEdit extends React.Component<VideoEditProps, VideoEditState> {
 
     handleVideoUpdate = (e: React.FormEvent) => {
         e.preventDefault();
-        fetch(`http://localhost:3000/videos/update/${this.props.videoToUpdate}`, {
+        fetch(`${APIURL}/videos/update/${this.props.videoToUpdate}`, {
             method: 'PUT',
             body: JSON.stringify({
                 video: {
