@@ -4,7 +4,6 @@ import Auth from './components/auth/Auth';
 import Home from './components/home/Home'
 
 interface AppProps {
-
 }
 
 interface AppState {

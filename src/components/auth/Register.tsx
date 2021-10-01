@@ -26,7 +26,7 @@ class Register extends React.Component<RegisterProp, RegisterState> {
     handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         fetch("http://localhost:3000/user/register", {
-            method: 'POST',
+            method: "POST",
             body: JSON.stringify({
                 user: {
                     fname: this.state.fname,

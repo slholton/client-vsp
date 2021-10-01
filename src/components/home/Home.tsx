@@ -6,7 +6,8 @@ import { Container, Row } from 'reactstrap'
 
 interface HomeProps {
     clearToken: () => void,
-    token: string 
+    token: string,
+    // updateToken: Function 
 }
 
 interface HomeState {
@@ -24,7 +25,7 @@ class Home extends React.Component<HomeProps, HomeState> {
     render() {
         return (
             <div>
-          {/* <Sitebar clearToken={this.props.clearToken} /> */}
+          {/* <Sitebar clearToken={this.props.clearToken} updateToken={this.props.updateToken} /> */}
                 <Container>
                     <Row>
                         <Videos token={this.props.token} />
