@@ -23,6 +23,7 @@ class Auth extends React.Component<AuthProp, AuthState> {
     
     render() { 
         return (
+            <div className="auth">
             <Container className="auth-container">
             <Row>
                 <Col md="6">
@@ -33,6 +34,7 @@ class Auth extends React.Component<AuthProp, AuthState> {
                 </Col>
             </Row>
         </Container>
+        </div>
           );
     }
 }
