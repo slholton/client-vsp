@@ -43,6 +43,9 @@ class Register extends React.Component<RegisterProp, RegisterState> {
         ).then((data) => {
             this.props.updateToken(data.sessionToken)
         })
+        .catch(err => {
+            console.error(err)
+        })
     }
 
 render() {
