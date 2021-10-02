@@ -5,7 +5,7 @@ switch (window.location.hostname) {
         APIURL = 'http://localhost:3000';
         break;
     case 'https://my-vsp-client.herokuapp.com/':
-        APIURL = 'https://my-vsp-db.herokuapp.com/';
+        APIURL = 'https://my-vsp-db.herokuapp.com';
         break;
     default:
         

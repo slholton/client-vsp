@@ -22,7 +22,7 @@ class Register extends React.Component<RegisterProp, RegisterState> {
         };
     }
 
-    componentDidMount() { }
+    // componentDidMount() { }
 
     handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
