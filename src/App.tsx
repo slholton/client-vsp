@@ -1,5 +1,5 @@
 import React from 'react';
-import SiteBar from './components/home/Navbar'
+// import SiteBar from './components/home/Navbar'
 import Auth from './components/auth/Auth';
 import Home from './components/home/Home'
 
@@ -47,8 +47,8 @@ class App extends React.Component<AppProps, AppState> {
      return (
       <div className="App">
         <div className="App">
-          <SiteBar clearToken={this.clearToken} updateToken={this.updateToken} />
-          {this.protectedViews}
+          {/* <SiteBar clearToken={this.clearToken} updateToken={this.updateToken} /> */}
+          {this.protectedViews()}
         </div>
       </div>
     )

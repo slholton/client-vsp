@@ -22,8 +22,6 @@ class Register extends React.Component<RegisterProp, RegisterState> {
         };
     }
 
-    // componentDidMount() { }
-
     handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         fetch(`${APIURL}/user/register`, {
