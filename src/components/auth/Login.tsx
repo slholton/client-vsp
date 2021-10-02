@@ -20,8 +20,9 @@ class Login extends React.Component<LoginProp, LoginState> {
         };
     }
 
-    handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
+    // handleSubmit = (e: React.FormEvent) => {
+    //     e.preventDefault();
+    componentDidMount() {
         fetch(`${APIURL}/user/login`, {
             method: 'POST',
             body: JSON.stringify({
@@ -40,11 +41,13 @@ class Login extends React.Component<LoginProp, LoginState> {
         })
     }
 
+
     render() {
         return (
             <div>
                 <h1>Login</h1>
-                <Form onSubmit={this.handleSubmit}>
+                {/* <Form onSubmit={this.handleSubmit}> */}
+                <Form >    
                     <FormGroup>
                         <Label htmlFor="email"> Email </Label>
                         <Input onChange={(e) => this.setState({ email: e.target.value })}
