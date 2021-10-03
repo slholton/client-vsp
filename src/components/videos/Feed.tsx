@@ -73,7 +73,7 @@ class Feed extends React.Component<FeedProps, FeedState> {
                             </tr>
                         </thead>
                         <tbody>
-                            {this.videoMapper}
+                            {this.videoMapper()}
                         </tbody>
                         <td>
                             <Button onClick={() => { this.props.updateVideo(this.video); this.props.updateOn() }}>Update Video</Button>
