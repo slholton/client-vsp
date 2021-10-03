@@ -72,7 +72,7 @@ class Feed extends React.Component<FeedProps, FeedState> {
                                 <th>Playlist</th>
                             </tr>
                         </thead>
-                        <tbody>{this.videoMapper()}</tbody>
+                        {/* <tbody>{this.videoMapper()}</tbody> */}
 
                         {this.props.videos}
 
