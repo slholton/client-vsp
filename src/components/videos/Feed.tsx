@@ -60,26 +60,38 @@ class Feed extends React.Component<FeedProps, FeedState> {
         return (
             <div className="videoFeed">
                 <div className="videoFeed">
-                <h3>Videos</h3>
-                <hr />
-                <Table>
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Video Publish Date</th>
-                            <th>Title</th>
-                            <th>Description</th>
-                            <th>Category</th>
-                            <th>Playlist</th>
-                        </tr>
-                    </thead>
-                    <tbody>{this.videoMapper()}</tbody>
-                    <td>
-                        <Button onClick={() => { this.props.updateVideo(this.video); this.props.updateOn() }}>Update Video</Button>
-                        <Button onClick={() => { this.deleteVideo(this.video) }}>Delete Video</Button>
-                    </td>
-                </Table>
-            </div>
+                    <h3>Videos</h3>
+                    <hr />
+                    <Table>
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Video Publish Date</th>
+                                <th>Title</th>
+                                <th>Description</th>
+                                <th>Category</th>
+                                <th>Playlist</th>
+                            </tr>
+                        </thead>
+                        {/* <tbody>{this.videoMapper()}</tbody> */}
+
+                        <tbody>
+                            <tr key={this.video.id}>
+                                {/* <th scope="row">{video.id}</th> */}
+                                <td>{this.video.publishDate}</td>
+                                <td>{this.video.title}</td>
+                                <td>{this.video.description}</td>
+                                <td>{this.video.categoryId}</td>
+                                <td>{this.video.playlist}</td>
+                            </tr>
+                        </tbody>
+                        
+                        <td>
+                            <Button onClick={() => { this.props.updateVideo(this.video); this.props.updateOn() }}>Update Video</Button>
+                            <Button onClick={() => { this.deleteVideo(this.video) }}>Delete Video</Button>
+                        </td>
+                    </Table>
+                </div>
             </div>
         );
     }
