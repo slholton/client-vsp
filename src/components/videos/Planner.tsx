@@ -74,7 +74,7 @@ class Planner extends React.Component<PlannerProps, PlannerState> {
                     <FormGroup>
                         <Label htmlFor="date"> Video Publish Date </Label>
                         <Input onChange={(e) => this.setState({ publishDate: e.target.value })}
-                            type="text" name="publishDate" publishDate={this.state.publishDate} />
+                            type="text" name="publishDate" value={this.state.publishDate} />
                     </FormGroup>
                     <FormGroup>
                         <Label htmlFor="title"> Title </Label>

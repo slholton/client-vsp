@@ -28,7 +28,7 @@ class Feed extends React.Component<FeedProps, FeedState> {
             method: 'DELETE',
             headers: new Headers({
                 'Content-Type': 'application/json',
-                'Authorization': this.props.token
+                'Authorization': `Bearer ${this.props.token}`
             })
         }).then(() => this.props.fetchVideos())
     }
@@ -50,10 +50,10 @@ class Feed extends React.Component<FeedProps, FeedState> {
                     <td>{this.video.description}</td>
                     <td>{this.video.categoryId}</td>
                     <td>{this.video.playlist}</td>
-                    <td>
+                    {/* <td>
                         <Button onClick={() => { this.props.updateVideo(this.video); this.props.updateOn() }}>Update Video</Button>
                         <Button onClick={() => { this.deleteVideo(this.video) }}>Delete Video</Button>
-                    </td>
+                    </td> */}
                 </tr>
             )
         })
@@ -76,6 +76,10 @@ class Feed extends React.Component<FeedProps, FeedState> {
                         </tr>
                     </thead>
                     <tbody>{this.videoMapper()}</tbody>
+                    <td>
+                        <Button onClick={() => { this.props.updateVideo(this.video); this.props.updateOn() }}>Update Video</Button>
+                        <Button onClick={() => { this.deleteVideo(this.video) }}>Delete Video</Button>
+                    </td>
                 </Table>
             </div>
         );
