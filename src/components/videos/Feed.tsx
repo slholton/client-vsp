@@ -43,9 +43,8 @@ class Feed extends React.Component<FeedProps, FeedState> {
             playlist?: any;
         }, index: React.Key | null | undefined) => {
             return (
-                <tr key={video.id}>
-
-                    {/* <th scope="row">{video.id}</th> */}
+                <tr key={index}>
+                    <th scope="row">{video.id}</th>
                     <td>{this.video.publishDate}</td>
                     <td>{this.video.title}</td>
                     <td>{this.video.description}</td>
@@ -73,18 +72,9 @@ class Feed extends React.Component<FeedProps, FeedState> {
                                 <th>Playlist</th>
                             </tr>
                         </thead>
-                        {/* <tbody>{this.videoMapper()}</tbody> */}
+                        <tbody>{this.videoMapper()}</tbody>
 
-                        <tbody>
-                            <tr key={this.video.id}>
-                                {/* <th scope="row">{video.id}</th> */}
-                                {/* <td>{this.video.publishDate}</td>
-                                <td>{this.video.title}</td>
-                                <td>{this.video.description}</td>
-                                <td>{this.video.categoryId}</td>
-                                <td>{this.video.playlist}</td> */}
-                            </tr>
-                        </tbody>
+                        {this.props.videos}
 
                         <td>
                             <Button onClick={() => { this.props.updateVideo(this.video); this.props.updateOn() }}>Update Video</Button>
