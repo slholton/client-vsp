@@ -75,7 +75,7 @@ class Feed extends React.Component<FeedProps, FeedState> {
                         <tbody>
                             {this.props.videos.map(() => (
                                 <tr>
-                                    <th scope="row">{this.video.id}</th>
+                                    <td scope="row">{this.video.id}</td>
                                     <td>{this.video.publishDate}</td>
                                     <td>{this.video.title}</td>
                                     <td>{this.video.description}</td>
