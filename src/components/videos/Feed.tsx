@@ -33,50 +33,27 @@ class Feed extends React.Component<FeedProps, FeedState> {
         }).then(() => this.props.fetchVideos())
     }
 
-    // videoMapper = () => {
-    //     return this.props.fetchVideos((video: {
-    //         id: any;
-    //         publishDate?: any;
-    //         title?: any;
-    //         description?: any;
-    //         categoryId?: any;
-    //         playlist?: any;
-    //     }, index: React.Key | null | undefined) => {
-    //         return (
-    //             <tr key={index}>
-    //                 <th scope="row">{video.id}</th>
-    //                 <td>{this.video.publishDate}</td>
-    //                 <td>{this.video.title}</td>
-    //                 <td>{this.video.description}</td>
-    //                 <td>{this.video.categoryId}</td>
-    //                 <td>{this.video.playlist}</td>
-    //             </tr>
-    //         )
-    //     })
-    // }
-
     videoMapper = () => {
-        return this.props.fetchVideos((video: { id: boolean | null | undefined; }, index: any) => {
-          return React.createElement(
-            "tr",
-            {
-              key: index
-            },
-            React.createElement(
-              "th",
-              {
-                scope: "row"
-              },
-              video.id
-            ),
-            React.createElement("td", null, this.video.publishDate),
-            React.createElement("td", null, this.video.title),
-            React.createElement("td", null, this.video.description),
-            React.createElement("td", null, this.video.categoryId),
-            React.createElement("td", null, this.video.playlist)
-          );
-        });
-      };
+        return this.props.fetchVideos((video: {
+            id: any;
+            publishDate?: any;
+            title?: any;
+            description?: any;
+            categoryId?: any;
+            playlist?: any;
+        }, index: React.Key | null | undefined) => {
+            return (
+                <tr key={index}>
+                    <th scope="row">{video.id}</th>
+                    <td>{this.video.publishDate}</td>
+                    <td>{this.video.title}</td>
+                    <td>{this.video.description}</td>
+                    <td>{this.video.categoryId}</td>
+                    <td>{this.video.playlist}</td>
+                </tr>
+            )
+        })
+    }
 
     render() {
         return (
