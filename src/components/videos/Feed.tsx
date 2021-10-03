@@ -33,27 +33,27 @@ class Feed extends React.Component<FeedProps, FeedState> {
         }).then(() => this.props.fetchVideos())
     }
 
-    videoMapper = () => {
-        return this.props.fetchVideos((video: {
-            id: any;
-            publishDate?: any;
-            title?: any;
-            description?: any;
-            categoryId?: any;
-            playlist?: any;
-        }, index: React.Key | null | undefined) => {
-            return (
-                <tr key={index}>
-                    <th scope="row">{video.id}</th>
-                    <td>{this.video.publishDate}</td>
-                    <td>{this.video.title}</td>
-                    <td>{this.video.description}</td>
-                    <td>{this.video.categoryId}</td>
-                    <td>{this.video.playlist}</td>
-                </tr>
-            )
-        })
-    }
+    // videoMapper = () => {
+    //     return this.props.fetchVideos((video: {
+    //         id: any;
+    //         publishDate?: any;
+    //         title?: any;
+    //         description?: any;
+    //         categoryId?: any;
+    //         playlist?: any;
+    //     }, index: React.Key | null | undefined) => {
+    //         return (
+    //             <tr key={index}>
+    //                 <th scope="row">{video.id}</th>
+    //                 <td>{this.video.publishDate}</td>
+    //                 <td>{this.video.title}</td>
+    //                 <td>{this.video.description}</td>
+    //                 <td>{this.video.categoryId}</td>
+    //                 <td>{this.video.playlist}</td>
+    //             </tr>
+    //         )
+    //     })
+    // }
 
     render() {
         return (
@@ -72,7 +72,19 @@ class Feed extends React.Component<FeedProps, FeedState> {
                                 <th>Playlist</th>
                             </tr>
                         </thead>
-                        <tbody>{this.videoMapper}</tbody>
+                        <tbody>
+                            {this.props.videos.map(() => (
+                                <tr>
+                                    <th scope="row">{this.video.id}</th>
+                                    <td>{this.video.publishDate}</td>
+                                    <td>{this.video.title}</td>
+                                    <td>{this.video.description}</td>
+                                    <td>{this.video.categoryId}</td>
+                                    <td>{this.video.playlist}</td>
+                                </tr>
+                            ))}
+                            {/* {this.videoMapper} */}
+                        </tbody>
                         <td>
                             <Button onClick={() => { this.props.updateVideo(this.video); this.props.updateOn() }}>Update Video</Button>
                             <Button onClick={() => { this.deleteVideo(this.video) }}>Delete Video</Button>
