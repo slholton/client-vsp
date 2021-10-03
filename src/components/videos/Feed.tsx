@@ -33,8 +33,9 @@ class Feed extends React.Component<FeedProps, FeedState> {
         }).then(() => this.props.fetchVideos())
     }
 
-    // videoMapper = () => {
-    //     return this.props.fetchVideos((video: {
+    videoMapper = () => {
+        return this.props.fetchVideos(this.props.videos)
+    //     : {
     //         id: any;
     //         publishDate?: any;
     //         title?: any;
@@ -53,7 +54,7 @@ class Feed extends React.Component<FeedProps, FeedState> {
     //             </tr>
     //         )
     //     })
-    // }
+   }
 
     render() {
         return (
@@ -74,17 +75,18 @@ class Feed extends React.Component<FeedProps, FeedState> {
                         </thead>
                         <tbody>
                             {this.props.videos.map(() => (
-                                <tr>
-                                    {/* <td>{this.video.id}</td> */}
-                                    <td>{this.video.publishDate}</td>
-                                    <td>{this.video.title}</td>
-                                    <td>{this.video.description}</td>
-                                    <td>{this.video.categoryId}</td>
-                                    <td>{this.video.playlist}</td>
-                                </tr>
-                            ))}
+                            //     <tr>
+                            //         <td>{this.video.id}</td>
+                            //         <td>{this.video.publishDate}</td>
+                            //         <td>{this.video.title}</td>
+                            //         <td>{this.video.description}</td>
+                            //         <td>{this.video.categoryId}</td>
+                            //         <td>{this.video.playlist}</td>
+                            //     </tr>
+                            // ))}
                             {/* {this.videoMapper} */}
-                        </tbody>
+                            ))}
+                            </tbody>
                         <td>
                             <Button onClick={() => { this.props.updateVideo(this.video); this.props.updateOn() }}>Update Video</Button>
                             <Button onClick={() => { this.deleteVideo(this.video) }}>Delete Video</Button>
