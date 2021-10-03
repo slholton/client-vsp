@@ -50,10 +50,6 @@ class Feed extends React.Component<FeedProps, FeedState> {
                     <td>{this.video.description}</td>
                     <td>{this.video.categoryId}</td>
                     <td>{this.video.playlist}</td>
-                    {/* <td>
-                        <Button onClick={() => { this.props.updateVideo(this.video); this.props.updateOn() }}>Update Video</Button>
-                        <Button onClick={() => { this.deleteVideo(this.video) }}>Delete Video</Button>
-                    </td> */}
                 </tr>
             )
         })

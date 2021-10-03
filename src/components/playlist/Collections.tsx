@@ -48,10 +48,6 @@ class Collections extends React.Component<CollectionProps, CollectionState> {
                     <td>{this.playlist.title}</td>
                     <td>{this.playlist.description}</td>
                     <td>{this.playlist.status}</td>
-                    <td>
-                        <Button onClick={() => { this.props.updatePlaylist(this.playlist); this.props.updateOn()}}>Update Playlist</Button>
-                        <Button onClick={() => { this.deletePlaylist(playlist) }}>Delete Playlist</Button>
-                    </td>
                 </tr>
             )
         })
@@ -73,6 +69,10 @@ class Collections extends React.Component<CollectionProps, CollectionState> {
                         </tr>
                     </thead>
                     <tbody>{this.playlistMapper()}</tbody>
+                    <td>
+                        <Button onClick={() => { this.props.updatePlaylist(this.playlist); this.props.updateOn()}}>Update Playlist</Button>
+                        <Button onClick={() => { this.deletePlaylist(this.playlist) }}>Delete Playlist</Button>
+                    </td>
                 </Table>
             </div>
         );
