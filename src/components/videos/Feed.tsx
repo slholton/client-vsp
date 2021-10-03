@@ -43,8 +43,9 @@ class Feed extends React.Component<FeedProps, FeedState> {
             playlist?: any;
         }, index: React.Key | null | undefined) => {
             return (
-                <tr key={index}>
-                    <th scope="row">{video.id}</th>
+                <tr key={video.id}>
+
+                    {/* <th scope="row">{video.id}</th> */}
                     <td>{this.video.publishDate}</td>
                     <td>{this.video.title}</td>
                     <td>{this.video.description}</td>
@@ -57,7 +58,8 @@ class Feed extends React.Component<FeedProps, FeedState> {
 
     render() {
         return (
-            <div>
+            <div className="videoFeed">
+                <div className="videoFeed">
                 <h3>Videos</h3>
                 <hr />
                 <Table>
@@ -77,6 +79,7 @@ class Feed extends React.Component<FeedProps, FeedState> {
                         <Button onClick={() => { this.deleteVideo(this.video) }}>Delete Video</Button>
                     </td>
                 </Table>
+            </div>
             </div>
         );
     }
