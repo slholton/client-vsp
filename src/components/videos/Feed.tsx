@@ -78,14 +78,14 @@ class Feed extends React.Component<FeedProps, FeedState> {
                         <tbody>
                             <tr key={this.video.id}>
                                 {/* <th scope="row">{video.id}</th> */}
-                                <td>{this.video.publishDate}</td>
+                                {/* <td>{this.video.publishDate}</td>
                                 <td>{this.video.title}</td>
                                 <td>{this.video.description}</td>
                                 <td>{this.video.categoryId}</td>
-                                <td>{this.video.playlist}</td>
+                                <td>{this.video.playlist}</td> */}
                             </tr>
                         </tbody>
-                        
+
                         <td>
                             <Button onClick={() => { this.props.updateVideo(this.video); this.props.updateOn() }}>Update Video</Button>
                             <Button onClick={() => { this.deleteVideo(this.video) }}>Delete Video</Button>
