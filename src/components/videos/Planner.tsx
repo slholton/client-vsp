@@ -100,7 +100,7 @@ class Planner extends React.Component<PlannerProps, PlannerState> {
                         <Input onChange={(e) => this.setState({ playlist: e.target.value })}
                             type="text" name="date" value={this.state.playlist} />
                     </FormGroup>
-                    <Button className='sub-button' type="submit">Add Video to Planner</Button>
+                    <Button className='submit-video-button' type="submit">Add Video to Planner</Button>
                 </Form>
             </div>
           );

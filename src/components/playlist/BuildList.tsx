@@ -88,7 +88,7 @@ class BuildList extends React.Component<ListProps, ListState> {
                             <option value="Unlisted">Unlisted</option>
                         </Input>
                     </FormGroup>
-                    <Button className='sub-button' type="submit">Add Playlist</Button>
+                    <Button className='submit-playlist-button' type="submit">Add Playlist</Button>
                 </Form>
             </div>
           );
