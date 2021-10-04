@@ -1,11 +1,21 @@
 .create-video {
-    padding-top: 10%;
+    padding-top: 5%;
     color: #236F21;
 }
 
 .submit-video-button {
     color: #FFFFFF;
     background-color:#236F21;
+}
+
+.update-video-button {
+    color: #FFFFFF;
+    background-color: #cba135;
+}
+
+.delete-video-button {
+    color: #FFFFFF;
+    background-color: #CC5500;
 }
 
 .create-video-header {

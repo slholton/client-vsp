@@ -77,7 +77,7 @@ class Feed extends React.Component<FeedProps, FeedState> {
                         </tbody>
                         <td>
                             <Button onClick={() => { this.props.updateVideo(this.video); this.props.updateOn() }}>Update Video</Button>
-                            <Button onClick={() => { this.deleteVideo(this.video) }}>Delete Video</Button>
+                            <Button className="delete-video-button" onClick={() => { this.deleteVideo(this.video) }}>Delete Video</Button>
                         </td>
                     </Table>
                 </div>

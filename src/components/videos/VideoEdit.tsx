@@ -90,7 +90,7 @@ class VideoEdit extends React.Component<VideoEditProps, VideoEditState> {
                                 <Input onChange={(e) => this.setState({ editPlaylist: e.target.value })}
                                     type="text" name="date" value={this.state.editPlaylist} />
                             </FormGroup>
-                            <Button type="submit">Update Video</Button>
+                            <Button className="update-video-button" type="submit">Update Video</Button>
                         </Form>
                     </ModalBody>
                 </Modal>
