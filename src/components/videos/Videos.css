@@ -1,5 +1,5 @@
 .create-video {
-    padding-top: 20%;
+    padding-top: 10%;
     color: #236F21;
 }
 
@@ -8,18 +8,18 @@
     background-color:#236F21;
 }
 
-.create-header {
+.create-video-header {
     font-size: 36px;
     text-align: center;
     color: #236F21;
 }
 
-.create-form label{
+.create-video-form label{
     color: #236F21;
     justify-content: center;
 }
 
-.create-form input{
+.create-video-form input{
     color: #236F21;
     justify-content: center;
 }

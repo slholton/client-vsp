@@ -70,7 +70,7 @@ class Planner extends React.Component<PlannerProps, PlannerState> {
         return (
             <div>
                 <h3 className='create-header'>Schedule Your Video Content </h3>
-                <Form className='create-form' onSubmit={this.handleSubmit}>
+                <Form className='create-video-form' onSubmit={this.handleSubmit}>
                     <FormGroup>
                         <Label htmlFor="date"> Video Publish Date </Label>
                         <Input onChange={(e) => this.setState({ publishDate: e.target.value })}

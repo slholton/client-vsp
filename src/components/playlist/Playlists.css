@@ -1,5 +1,5 @@
 .create-playlist {
-    padding-top: 20%;
+    padding-top: 10%;
     color: #965883;
 }
 
@@ -8,18 +8,18 @@
     background-color: #965883;
 }
 
-.create-header {
+.create-playlist-header {
     font-size: 36px;
     text-align: center;
     color: #965883;
 }
 
-.create-form label{
+.create-playlist-form label{
     color: #965883;
     justify-content: center;
 }
 
-.create-form input{
+.create-playlist-form input{
     color: #965883;
     justify-content: center;
 }
