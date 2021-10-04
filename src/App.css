@@ -1,3 +1,6 @@
-.App {
-  background-image: url(./assets/plants.jpeg);
+.home-background {
+  background: url(./assets/plants.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: auto;
 }
