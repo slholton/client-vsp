@@ -1,6 +1,7 @@
 .App {
   background: url(./assets/plants.jpeg);
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 100vw auto;
+  background-position: top center;
   padding: auto;
 }
