@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
+import { Form, FormGroup, Label, Input, Button, Container } from 'reactstrap';
 import APIURL from '../../helpers/environment'
 
 type LoginProp = {
@@ -44,6 +44,7 @@ class Login extends React.Component<LoginProp, LoginState> {
     render() {
         return (
             <div>
+                <Container className="login-container">
                 <h1>Login</h1>
                 <Form onSubmit={this.handleSubmit}>
                     <FormGroup>
@@ -58,6 +59,7 @@ class Login extends React.Component<LoginProp, LoginState> {
                     </FormGroup>
                     <Button type="submit">Login</Button>
                 </Form>
+                </Container>
             </div>
         );
     }
