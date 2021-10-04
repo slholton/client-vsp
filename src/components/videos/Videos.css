@@ -1,0 +1,22 @@
+.create-video {
+    padding-top: 20%;
+    background-color: #236F21;
+}
+
+.sub-button {
+    color: #965883;
+    background-color:#FFFFFF;
+}
+
+.create-header {
+    font-size: 36px;
+    color: #965883;
+}
+
+.create-form label{
+    color: #965883;
+}
+
+.create-form input{
+    background-color: #FFFFFF;
+}

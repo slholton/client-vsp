@@ -3,6 +3,7 @@ import { Container, Row, Col } from 'reactstrap';
 import Planner from './Planner';  // Creates Videos
 import Feed from './Feed'; // Reads & Deletes Videos
 import VideoEdit from './VideoEdit'; // Updates Videos
+import './Videos.css'
 import APIURL from '../../helpers/environment'
 
 interface VideosProps {
@@ -12,7 +13,7 @@ interface VideosProps {
 interface VideosState {
     videos: [],
     updateActive: true | false,
-    videoToUpdate: object
+    videoToUpdate: {}
 }
 
 class Videos extends React.Component<VideosProps, VideosState> {
@@ -22,8 +23,8 @@ class Videos extends React.Component<VideosProps, VideosState> {
         super(props);
         this.state = {
             videos: [],
-            updateActive: (false),
-            videoToUpdate: ({})
+            updateActive: false,
+            videoToUpdate: {}
         };
     }
 
@@ -62,13 +63,13 @@ class Videos extends React.Component<VideosProps, VideosState> {
 
     componentDidMount() {
         this.fetchVideos()
-    }
+    };
 
     render() {
         return (
             <div className="Videos">
                 <div className="Videos">
-                    <Container>
+                    <Container className='create-video'>
                         <Row>
                             <Col md="9">
                                 <Feed videos={this.state.videos} updateVideo={this.updateVideo}
@@ -89,5 +90,3 @@ class Videos extends React.Component<VideosProps, VideosState> {
 }
 
 export default Videos;
-
-// videoToUpdate={this.videoToUpdate}

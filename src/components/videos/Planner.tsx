@@ -69,8 +69,8 @@ class Planner extends React.Component<PlannerProps, PlannerState> {
     render() { 
         return (
             <div>
-                <h3>Schedule Your Video Content </h3>
-                <Form onSubmit={this.handleSubmit}>
+                <h3 className='create-header'>Schedule Your Video Content </h3>
+                <Form className='create-form' onSubmit={this.handleSubmit}>
                     <FormGroup>
                         <Label htmlFor="date"> Video Publish Date </Label>
                         <Input onChange={(e) => this.setState({ publishDate: e.target.value })}
@@ -100,7 +100,7 @@ class Planner extends React.Component<PlannerProps, PlannerState> {
                         <Input onChange={(e) => this.setState({ playlist: e.target.value })}
                             type="text" name="date" value={this.state.playlist} />
                     </FormGroup>
-                    <Button type="submit">Add Video to Planner</Button>
+                    <Button className='sub-button' type="submit">Add Video to Planner</Button>
                 </Form>
             </div>
           );
