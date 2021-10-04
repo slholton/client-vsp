@@ -1,6 +1,10 @@
-/* .home-background {
+.home-background {
     background: url(../../assets/plants.jpeg);
     background-repeat: no-repeat;
     background-size: cover;
     padding: auto;
-  } */
+  }
+
+  /* width: cover;
+  height: 100vh; */
+  /* padding: auto; */

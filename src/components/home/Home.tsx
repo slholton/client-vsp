@@ -2,7 +2,7 @@ import React from 'react'
 import Videos from '../videos/Videos'
 import Playlists from '../playlist/Playlists'
 import { Container, Row, Col } from 'reactstrap'
-// import './Home.css'
+import './Home.css'
 // import Sitebar from './Navbar'
 
 interface HomeProps {
