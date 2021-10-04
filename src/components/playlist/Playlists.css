@@ -8,6 +8,16 @@
     background-color: #965883;
 }
 
+.update-video-button {
+    color: #FFFFFF;
+    background-color: #cba135;
+}
+
+.delete-video-button {
+    color: #FFFFFF;
+    background-color: #CC5500;
+}
+
 .create-playlist-header {
     font-size: 36px;
     text-align: center;
