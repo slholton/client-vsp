@@ -1,6 +1,6 @@
-/* .home-background { */
-    /* background: url(../../assets/home_studio.jpeg); */
-    /* background-repeat: no-repeat;
+.home-background {
+    background: url(../../assets/home_studio.jpeg);
+    background-repeat: no-repeat;
     background-size: cover;
     padding: auto;
-  } */
+  }
