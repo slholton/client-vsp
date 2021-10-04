@@ -26,6 +26,7 @@ class Auth extends React.Component<AuthProp, AuthState> {
         return (
             <div className="auth">
             <Container className="auth-container">
+                <h1 className="auth-welcome"> Welcome to Your Video Content Planner </h1>
             <Row>
                 <Col md="6">
                     <Register updateToken={this.props.updateToken} />

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
+import { Form, FormGroup, Label, Input, Button, Container } from 'reactstrap';
 import APIURL from '../../helpers/environment'
 
 type RegisterProp = {
@@ -49,6 +49,7 @@ class Register extends React.Component<RegisterProp, RegisterState> {
 render() {
     return (
         <div>
+            <Container className="register-container">
             <h1>Register</h1>
             <Form onSubmit={this.handleSubmit}>
                 <FormGroup>
@@ -68,6 +69,7 @@ render() {
                 </FormGroup>
                 <Button type="submit">Register</Button>
             </Form>
+            </Container>
         </div>
     );
 }

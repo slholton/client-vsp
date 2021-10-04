@@ -3,3 +3,18 @@
     justify-content: center;
     text-align: center;
 }
+
+.register-container {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.auth-welcome {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #236F21;
+    font-family: sans-serif;
+}
+
