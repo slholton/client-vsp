@@ -1,6 +1,7 @@
 import React from 'react';
 import Auth from './components/auth/Auth';
-import Home from './components/home/Home'
+import Home from './components/home/Home';
+import './App.css';
 
 interface AppProps {
 }
