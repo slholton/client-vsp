@@ -70,8 +70,8 @@ class Collections extends React.Component<CollectionProps, CollectionState> {
                     </thead>
                     <tbody>{this.playlistMapper()}</tbody>
                     <td>
-                        <Button className='update-video-button' onClick={() => { this.props.updatePlaylist(this.playlist); this.props.updateOn()}}>Update Playlist</Button>
-                        <Button className='delete-video-button' onClick={() => { this.deletePlaylist(this.playlist) }}>Delete Playlist</Button>
+                        <Button className='update-playlist-button' onClick={() => { this.props.updatePlaylist(this.playlist); this.props.updateOn()}}>Update Playlist</Button>
+                        <Button className='delete-playlist-button' onClick={() => { this.deletePlaylist(this.playlist) }}>Delete Playlist</Button>
                     </td>
                 </Table>
             </div>
