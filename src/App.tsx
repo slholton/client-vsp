@@ -39,7 +39,7 @@ class App extends React.Component<AppProps, AppState> {
 
   protectedViews = () => {
     return (this.state.sessionToken === localStorage.getItem('token') 
-    ? <Home token={this.state.sessionToken} clearToken={this.clearToken} />
+    ? <Home token={this.state.sessionToken} clearToken={this.clearToken} updateToken={this.updateToken} />
     : <Auth updateToken={this.updateToken} />
     )}
 
