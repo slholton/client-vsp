@@ -62,8 +62,8 @@ class BuildList extends React.Component<ListProps, ListState> {
     render() { 
         return (
             <div>
-                <h3>Create a Playlist</h3>
-                <Form onSubmit={this.handleSubmit}>
+                <h3 className='create-header'>Create a Playlist</h3>
+                <Form className='create-form' onSubmit={this.handleSubmit}>
                     <FormGroup>
                         <Label htmlFor="date"> Playlist Publish Date </Label>
                         <Input onChange={(e) => this.setState({ publishDate: e.target.value })}
@@ -88,7 +88,7 @@ class BuildList extends React.Component<ListProps, ListState> {
                             <option value="Unlisted">Unlisted</option>
                         </Input>
                     </FormGroup>
-                    <Button type="submit">Add Playlist</Button>
+                    <Button className='sub-button' type="submit">Add Playlist</Button>
                 </Form>
             </div>
           );

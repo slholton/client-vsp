@@ -3,6 +3,7 @@ import { Container, Row, Col } from 'reactstrap';
 import BuildList from './BuildList';  // Creates Playlists
 import Collections from './Collections'; // Reads & Deletes Playlists
 import PlayUpdate from './PlayUpdate' // Updates Playlists
+import './Playlists.css'
 import APIURL from '../../helpers/environment'
 
 interface PlaylistProps {
@@ -69,7 +70,7 @@ class Playlists extends React.Component<PlaylistProps, PlaylistState> {
         return (
             <div className="Playlists">
                 <div className="Playlists">
-                    <Container>
+                    <Container className='create-playlist'>
                         <Row>
                             <Col md="9">
                                 <Collections playlists={this.state.playlists} updatePlaylist={this.updatePlaylist} 

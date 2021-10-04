@@ -1,23 +1,23 @@
-.create-video {
+.create-playlist {
     padding-top: 20%;
-    color: #236F21;
+    color: #965883;
 }
 
 .sub-button {
     color: #FFFFFF;
-    background-color:#236F21;
+    background-color: #965883;
 }
 
 .create-header {
     font-size: 36px;
     text-align: center;
-    color: #236F21;
+    color: #965883;
 }
 
 .create-form label{
-    color: #236F21;
+    color: #965883;
 }
 
 .create-form input{
-    color: #965883;
+    color: #236F21;
 }
