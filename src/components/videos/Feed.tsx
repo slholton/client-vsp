@@ -59,7 +59,7 @@ class Feed extends React.Component<FeedProps, FeedState> {
         return (
             <div className="videoFeed">
                 <div className="videoFeed">
-                    <h3>Videos</h3>
+                    <h3 className='create-header'>My Videos</h3>
                     <hr />
                     <Table>
                         <thead>

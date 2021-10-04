@@ -16,8 +16,10 @@
 
 .create-form label{
     color: #236F21;
+    justify-content: center;
 }
 
 .create-form input{
-    color: #965883;
+    color: #236F21;
+    justify-content: center;
 }

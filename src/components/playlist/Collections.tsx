@@ -56,7 +56,7 @@ class Collections extends React.Component<CollectionProps, CollectionState> {
     render() {
         return (
             <div>
-                <h3>Playlists</h3>
+                <h3 className='create-header'>My Playlists</h3>
                 <hr />
                 <Table>
                     <thead>
