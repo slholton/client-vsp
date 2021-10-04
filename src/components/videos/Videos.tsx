@@ -29,6 +29,7 @@ class Videos extends React.Component<VideosProps, VideosState> {
     }
 
     fetchVideos = () => {
+        console.info(this.state.videos)
         fetch(`${APIURL}/videos/mine`, {
             method: 'GET',
             headers: new Headers({

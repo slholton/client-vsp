@@ -34,56 +34,56 @@ class Feed extends React.Component<FeedProps, FeedState> {
     }
 
     videoMapper = () => {
-        return this.props.fetchVideos((video: {
-            id: any;
-            publishDate?: any;
-            title?: any;
-            description?: any;
-            categoryId?: any;
-            playlist?: any;
-        }, index: React.Key | null | undefined) => {
+        return this.props.videos.map((video: {
+                id: any;
+                publishDate?: any;
+                title?: any;
+                description?: any;
+                categoryId?: any;
+                playlist?: any;
+            }, index) => {
             return (
                 <tr key={index}>
                     <th scope="row">{video.id}</th>
-                    <td>{this.video.publishDate}</td>
-                    <td>{this.video.title}</td>
-                    <td>{this.video.description}</td>
-                    <td>{this.video.categoryId}</td>
-                    <td>{this.video.playlist}</td>
+                    <td>{video.publishDate}</td>
+                    <td>{video.title}</td>
+                    <td>{video.description}</td>
+                    <td>{video.categoryId}</td>
+                    <td>{video.playlist}</td>
                 </tr>
             )
         })
     }
 
-    render() {
-        return (
+render() {
+    return (
+        <div className="videoFeed">
             <div className="videoFeed">
-                <div className="videoFeed">
-                    <h3 className='create-video-header'>My Videos</h3>
-                    <hr />
-                    <Table>
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Video Publish Date</th>
-                                <th>Title</th>
-                                <th>Description</th>
-                                <th>Category</th>
-                                <th>Playlist</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {this.videoMapper()}
-                        </tbody>
-                        <td>
-                            <Button className='update-video-button' onClick={() => { this.props.updateVideo(this.video); this.props.updateOn() }}>Update Video</Button>
-                            <Button className="delete-video-button" onClick={() => { this.deleteVideo(this.video) }}>Delete Video</Button>
-                        </td>
-                    </Table>
-                </div>
+                <h3 className='create-video-header'>My Videos</h3>
+                <hr />
+                <Table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Video Publish Date</th>
+                            <th>Title</th>
+                            <th>Description</th>
+                            <th>Category</th>
+                            <th>Playlist</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {this.videoMapper()}
+                    </tbody>
+                    <td>
+                        <Button className='update-video-button' onClick={() => { this.props.updateVideo(this.video); this.props.updateOn() }}>Update Video</Button>
+                        <Button className="delete-video-button" onClick={() => { this.deleteVideo(this.video) }}>Delete Video</Button>
+                    </td>
+                </Table>
             </div>
-        );
-    }
+        </div>
+    );
+}
 }
 
 export default Feed;
