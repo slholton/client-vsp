@@ -7,7 +7,7 @@ interface VideoEditProps {
     token: string,
     updateVideo: Function,
     updateOff: () => void,
-    videoToUpdate: object
+    // videoToUpdate: object
 }
 
 interface VideoEditState {
@@ -32,7 +32,8 @@ class VideoEdit extends React.Component<VideoEditProps, VideoEditState> {
 
     handleVideoUpdate = (e: React.FormEvent) => {
         e.preventDefault();
-        fetch(`${APIURL}/videos/update/${this.props.videoToUpdate}`, {
+        // fetch(`${APIURL}/videos/update/${this.props.videoToUpdate}`, {
+        fetch(`${APIURL}/videos/update/${this.props.updateVideo}`, {
             method: 'PUT',
             body: JSON.stringify({
                 video: {

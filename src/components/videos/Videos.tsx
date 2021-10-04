@@ -79,7 +79,7 @@ class Videos extends React.Component<VideosProps, VideosState> {
                                 <Planner fetchVideos={this.fetchVideos} token={this.props.token} />
                             </Col>
                             {this.updateActive ? <VideoEdit updateVideo={this.videoToUpdate}
-                                updateOff={this.updateActive.updateOff} token={this.props.token} fetchVideos={this.fetchVideos} videoToUpdate={this.videoToUpdate} /> : <></>}
+                                updateOff={this.updateActive.updateOff} token={this.props.token} fetchVideos={this.fetchVideos}  /> : <></>}
                         </Row>
                     </Container>
                 </div>
@@ -89,3 +89,5 @@ class Videos extends React.Component<VideosProps, VideosState> {
 }
 
 export default Videos;
+
+// videoToUpdate={this.videoToUpdate}
