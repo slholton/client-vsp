@@ -1,12 +1,9 @@
 .App {
   background: url(./assets/plants.jpeg);
-  -webkit-background-size: cover;
-  -moz-background-size:cover;
-  -o-background-size: cover;
-  /* background-repeat: no-repeat; */
-  background-size: cover;
-  height: 100%;
-  overflow: hidden;
+  width: cover;
+  height: 100vh;
+  background-repeat: no-repeat;
+  /* background-size: cover; */
   /* margin: auto; */
   /* padding: auto; */
 }
