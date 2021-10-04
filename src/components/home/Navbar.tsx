@@ -1,11 +1,11 @@
 import React from 'react';
 import { Collapse, Navbar, Nav, NavItem, Button, NavbarBrand, NavbarToggler } from 'reactstrap';
-import Login from '../auth/Login';
-import Register from '../auth/Register'
+import Home from './Home'
 
 interface NavbarProps {
     clearToken: () => void,
-    updateToken: Function
+    updateToken: Function,
+    token: string
 }
 
 interface NavbarState {
@@ -43,8 +43,7 @@ class Sitebar extends React.Component<NavbarProps, NavbarState> {
                             </Nav>
                         </Collapse>
                     </Navbar>
-                    <Register updateToken={this.props.updateToken} />
-                    <Login updateToken={this.props.updateToken} />
+                    <Home clearToken={this.props.clearToken} token={this.props.token} updateToken={this.props.updateToken} />
                 </div>
             </div>
         );

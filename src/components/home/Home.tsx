@@ -27,7 +27,7 @@ class Home extends React.Component<HomeProps, HomeState> {
         return (
             <div className="home-main">
                 <div className="home-background">
-                    <Sitebar clearToken={this.props.clearToken} updateToken={this.props.updateToken} />
+                    <Sitebar clearToken={this.props.clearToken} updateToken={this.props.updateToken} token={this.props.token} />
                     <Container>
                         <Row>
                             <Videos token={this.props.token} />
