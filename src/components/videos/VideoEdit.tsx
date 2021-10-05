@@ -4,13 +4,10 @@ import APIURL from '../../helpers/environment'
 import { video } from './Feed'
 
 interface VideoEditProps {
-    // fetchVideos: Function,
     fetchVideos: () => void,
     token: string,
-   // updateVideo: () => void
     updateOff: () => void,
     videoToUpdate: video
-
 }
 
 interface VideoEditState {
@@ -36,11 +33,8 @@ class VideoEdit extends React.Component<VideoEditProps, VideoEditState> {
     }
 
     handleVideoUpdate = (e: React.FormEvent) => {
-        console.info('working?')
-    // handleVideoUpdate = (e: React.FormEvent) => {
         e.preventDefault();
         fetch(`${APIURL}/videos/update/${this.props.videoToUpdate.id}`, {
-        // fetch(`${APIURL}/videos/update/${this.props.updateVideo}`, {
             method: 'PUT',
             body: JSON.stringify({
                 video: {

@@ -30,12 +30,10 @@ class Home extends React.Component<HomeProps, HomeState> {
                     {/* <Sitebar clearToken={this.props.clearToken} updateToken={this.props.updateToken} token={this.props.token} /> */}
                     <Container>
                         <Row>
-                            <Col md="6">
-                                <Videos token={this.props.token} />
-                            </Col>
-                            <Col md="6">
-                                <Playlists token={this.props.token} />
-                            </Col>
+                            <Videos token={this.props.token} />
+                        </Row>
+                        <Row>
+                            <Playlists token={this.props.token} />
                         </Row>
                     </Container>
                 </div>
