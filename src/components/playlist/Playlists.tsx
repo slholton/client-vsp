@@ -13,7 +13,7 @@ interface PlaylistProps {
 interface PlaylistState {
     playlists: [];
     updateActive: true | false,
-    playlistToUpdate: object
+    playlistToUpdate: {}
 
 }
 
@@ -24,8 +24,8 @@ class Playlists extends React.Component<PlaylistProps, PlaylistState> {
         super(props);
         this.state = {
             playlists: [],
-            updateActive: (false),
-            playlistToUpdate: ({})
+            updateActive: false,
+            playlistToUpdate: {}
         };
     }
 

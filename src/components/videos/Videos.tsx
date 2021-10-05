@@ -29,7 +29,6 @@ class Videos extends React.Component<VideosProps, VideosState> {
     }
 
     fetchVideos = () => {
-        console.info(this.state.videos)
         fetch(`${APIURL}/videos/mine`, {
             method: 'GET',
             headers: new Headers({
@@ -75,7 +74,6 @@ class Videos extends React.Component<VideosProps, VideosState> {
                             <Col md="9">
                                 <Feed videos={this.state.videos} updateVideo={this.updateVideo}
                                     updateOn={this.updateOn} fetchVideos={this.fetchVideos} token={this.props.token} />
-
                             </Col>
                             <Col md="3">
                                 <Planner fetchVideos={this.fetchVideos} token={this.props.token} />
