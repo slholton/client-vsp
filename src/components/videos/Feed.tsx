@@ -24,7 +24,7 @@ class Feed extends React.Component<FeedProps, FeedState> {
     }
 
     deleteVideo = (id: any) => {
-        fetch(`${APIURL}/videos/delete/${id}`, {
+        fetch(`${APIURL}/videos/delete/${this.video.id}`, {
             method: 'DELETE',
             headers: new Headers({
                 'Content-Type': 'application/json',

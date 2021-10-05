@@ -78,8 +78,8 @@ class Videos extends React.Component<VideosProps, VideosState> {
                             <Col md="3">
                                 <Planner fetchVideos={this.fetchVideos} token={this.props.token} />
                             </Col>
-                            {this.updateActive ? <VideoEdit updateVideo={this.videoToUpdate}
-                                updateOff={this.updateActive.updateOff} token={this.props.token} fetchVideos={this.fetchVideos}  /> : <></>}
+                            {this.updateActive ? <VideoEdit updateVideo={this.updateVideo}
+                            updateOff={this.updateActive.updateOff} token={this.props.token} fetchVideos={this.fetchVideos} videoToUpdate={this.videoToUpdate}  /> : <></>}
                         </Row>
                     </Container>
                 </div>
