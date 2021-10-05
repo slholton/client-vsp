@@ -28,26 +28,26 @@ class Collections extends React.Component<CollectionProps, CollectionState> {
             method: 'DELETE',
             headers: new Headers({
                 'Content-Type': 'application/json',
-                'Authorization': this.props.token
+                'Authorization': `Bearer ${this.props.token}`
             })
         }).then(() => this.props.fetchPlaylists())
     }
 
     playlistMapper = () => {
-        return this.props.fetchPlaylists((playlist: {
+        return this.props.playlists.map((playlist: {
             id: any;
             publishDate?: any;
             title?: any;
             description?: any;
             status?: any;
-        }, index: React.Key | null | undefined) => {
+        }, index) => {
             return (
                 <tr key={index}>
                     <th scope="row">{playlist.id}</th>
-                    <td>{this.playlist.publishDate}</td>
-                    <td>{this.playlist.title}</td>
-                    <td>{this.playlist.description}</td>
-                    <td>{this.playlist.status}</td>
+                    <td>{playlist.publishDate}</td>
+                    <td>{playlist.title}</td>
+                    <td>{playlist.description}</td>
+                    <td>{playlist.status}</td>
                 </tr>
             )
         })
@@ -55,25 +55,27 @@ class Collections extends React.Component<CollectionProps, CollectionState> {
 
     render() {
         return (
-            <div>
-                <h3 className='create-playlist-header'>My Playlists</h3>
-                <hr />
-                <Table>
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Playlist Publish Date</th>
-                            <th>Title</th>
-                            <th>Description</th>
-                            <th>Playlist Privacy</th>
-                        </tr>
-                    </thead>
-                    <tbody>{this.playlistMapper()}</tbody>
-                    <td>
-                        <Button className='update-playlist-button' onClick={() => { this.props.updatePlaylist(this.playlist); this.props.updateOn()}}>Update Playlist</Button>
-                        <Button className='delete-playlist-button' onClick={() => { this.deletePlaylist(this.playlist) }}>Delete Playlist</Button>
-                    </td>
-                </Table>
+            <div className="playlistFeed">
+                <div className="playlistFeed">
+                    <h3 className='create-playlist-header'>My Playlists</h3>
+                    <hr />
+                    <Table>
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Playlist Publish Date</th>
+                                <th>Title</th>
+                                <th>Description</th>
+                                <th>Playlist Privacy</th>
+                            </tr>
+                        </thead>
+                        <tbody>{this.playlistMapper()}</tbody>
+                        <td>
+                            <Button className='update-playlist-button' onClick={() => { this.props.updatePlaylist(this.playlist); this.props.updateOn() }}>Update Playlist</Button>
+                            <Button className='delete-playlist-button' onClick={() => { this.deletePlaylist(this.playlist) }}>Delete Playlist</Button>
+                        </td>
+                    </Table>
+                </div>
             </div>
         );
     }
