@@ -15,7 +15,8 @@ interface VideoEditState {
     editTitle: string,
     editDescription: string,
     editCategoryId: string,
-    editPlaylist: string
+    editPlaylist: string,
+    modalIsOpen: boolean
 }
 
 class VideoEdit extends React.Component<VideoEditProps, VideoEditState> {
@@ -26,7 +27,8 @@ class VideoEdit extends React.Component<VideoEditProps, VideoEditState> {
             editTitle: " ",
             editDescription: " ",
             editCategoryId: " ",
-            editPlaylist: " "
+            editPlaylist: " ",
+            modalIsOpen: true
         };
     }
 
@@ -55,11 +57,20 @@ class VideoEdit extends React.Component<VideoEditProps, VideoEditState> {
         })
     }
 
+    modalToggle = () => {
+        this.setState({
+            modalIsOpen: false
+        });
+        this.props.updateOff()
+    }
+
+
     render() {
         return (
             <div>
-                <Modal isOpen={true}>
-                    <ModalHeader>Update A Video</ModalHeader>
+                <Modal isOpen={this.state.modalIsOpen}
+                    toggle = {this.modalToggle}>
+                    <ModalHeader toggle= {this.modalToggle}>Update A Video</ModalHeader>
                     <ModalBody>
                         <Form onSubmit={this.handleVideoUpdate}>
                             <FormGroup>
