@@ -61,11 +61,12 @@ class BuildList extends React.Component<ListProps, ListState> {
 
     render() { 
         return (
-            <div>
+            <div className="buildList">
+            <div className="buildList">
                 <h3 className='create-header'>Create a Playlist </h3>
                 <Form className='create-playlist-form' onSubmit={this.handleSubmit}>
                     <FormGroup>
-                        <Label htmlFor="date"> Playlist Publish Date </Label>
+                        <Label htmlFor="date"> Publish Date </Label>
                         <Input onChange={(e) => this.setState({ publishDate: e.target.value })}
                             type="text" name="publishDate" publishDate={this.state.publishDate} />
                     </FormGroup>
@@ -90,6 +91,7 @@ class BuildList extends React.Component<ListProps, ListState> {
                     </FormGroup>
                     <Button className='submit-playlist-button' type="submit">Add Playlist</Button>
                 </Form>
+            </div>
             </div>
           );
     }

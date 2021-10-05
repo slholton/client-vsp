@@ -62,10 +62,10 @@ class Collections extends React.Component<CollectionProps, CollectionState> {
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Playlist Publish Date</th>
+                                <th>Date</th>
                                 <th>Title</th>
                                 <th>Description</th>
-                                <th>Playlist Privacy</th>
+                                <th>Privacy</th>
                             </tr>
                         </thead>
                         <tbody>{this.playlistMapper()}</tbody>

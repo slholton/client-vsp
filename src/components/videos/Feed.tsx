@@ -64,7 +64,7 @@ class Feed extends React.Component<FeedProps, FeedState> {
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Video Publish Date</th>
+                                <th>Date</th>
                                 <th>Title</th>
                                 <th>Description</th>
                                 <th>Category</th>
