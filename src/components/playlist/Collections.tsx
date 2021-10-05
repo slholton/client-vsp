@@ -3,7 +3,7 @@ import { Table, Button } from 'reactstrap';
 import APIURL from '../../helpers/environment'
 
 interface CollectionProps {
-    playlists: [],
+    playlists: playlist[],
     token: string,
     fetchPlaylists: Function,
     updatePlaylist: Function,
@@ -14,16 +14,17 @@ interface CollectionState {
 
 }
 
+export type playlist = {
+    publishDate?: any;
+    title?: any;
+    description?: any;
+    status?: any;
+    id: any
+}
+
 class Collections extends React.Component<CollectionProps, CollectionState> {
-    playlist: any;
-    constructor(props: CollectionProps) {
-        super(props);
-        this.state = {
 
-        };
-    }
-
-    deletePlaylist = (playlist: { id: any; }) => {
+    deletePlaylist = (playlist: playlist) => {
         fetch(`${APIURL}/playlists/delete/${playlist.id}`, {
             method: 'DELETE',
             headers: new Headers({
@@ -34,13 +35,7 @@ class Collections extends React.Component<CollectionProps, CollectionState> {
     }
 
     playlistMapper = () => {
-        return this.props.playlists.map((playlist: {
-            id: any;
-            publishDate?: any;
-            title?: any;
-            description?: any;
-            status?: any;
-        }, index) => {
+        return this.props.playlists.map((playlist: playlist, index: number) => {
             return (
                 <tr key={index}>
                     <th scope="row">{playlist.id}</th>
@@ -48,6 +43,10 @@ class Collections extends React.Component<CollectionProps, CollectionState> {
                     <td>{playlist.title}</td>
                     <td>{playlist.description}</td>
                     <td>{playlist.status}</td>
+                    <td>
+                        <Button className='update-playlist-button' onClick={() => { this.props.updatePlaylist(playlist); this.props.updateOn() }}>Update Playlist</Button>
+                        <Button className='delete-playlist-button' onClick={() => { this.deletePlaylist(playlist) }}>Delete Playlist</Button>
+                    </td>
                 </tr>
             )
         })
@@ -70,10 +69,6 @@ class Collections extends React.Component<CollectionProps, CollectionState> {
                             </tr>
                         </thead>
                         <tbody>{this.playlistMapper()}</tbody>
-                        <td>
-                            <Button className='update-playlist-button' onClick={() => { this.props.updatePlaylist(this.playlist); this.props.updateOn() }}>Update Playlist</Button>
-                            <Button className='delete-playlist-button' onClick={() => { this.deletePlaylist(this.playlist) }}>Delete Playlist</Button>
-                        </td>
                     </Table>
                 </div>
             </div>

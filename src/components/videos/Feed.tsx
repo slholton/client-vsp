@@ -72,7 +72,6 @@ class Feed extends React.Component<FeedProps, FeedState> {
                             </tr>
                         </thead>
                         <tbody>{this.videoMapper()}</tbody>
-
                     </Table>
                 </div>
             </div>

@@ -5,66 +5,64 @@ import Collections from './Collections'; // Reads & Deletes Playlists
 import PlayUpdate from './PlayUpdate' // Updates Playlists
 import './Playlists.css'
 import APIURL from '../../helpers/environment'
+import { playlist } from './Collections'
 
 interface PlaylistProps {
     token: string
 }
 
 interface PlaylistState {
-    playlists: [];
+    playlists: playlist[];
     updateActive: true | false,
-    playlistToUpdate: {}
-
+    playlistToUpdate: playlist | null
 }
 
 class Playlists extends React.Component<PlaylistProps, PlaylistState> {
-    playlistToUpdate: any;
-    updateActive: any;
     constructor(props: PlaylistProps) {
         super(props);
         this.state = {
             playlists: [],
             updateActive: false,
-            playlistToUpdate: {}
+            playlistToUpdate: null
         };
     }
 
-        fetchPlaylists = () => {
-            fetch(`${APIURL}/playlists/mine`, {
-                method: 'GET',
-                headers: new Headers({
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${this.props.token}`
-                })
-            }).then((res) => res.json())
-                .then((playlistData) => {
-                    this.setState({
-                        playlists: playlistData
+    fetchPlaylists = () => {
+        fetch(`${APIURL}/playlists/mine`, {
+            method: 'GET',
+            headers: new Headers({
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${this.props.token}`
+            })
+        }).then((res) => res.json())
+            .then((playlistData) => {
+                this.setState({
+                    playlists: playlistData
                 })
             })
-        }
+    }
 
-        updatePlaylist = (playlist: any) => {
-            this.setState({
-                playlistToUpdate: playlist
-            })
-        }
+    updatePlaylist = (playlist: playlist): void => {
+        this.setState({
+            playlistToUpdate: playlist
+        })
+    }
 
-        updateOn = () => {
-            this.setState({
-                updateActive: true
-            });
-        }
+    updateOn = () => {
+        this.setState({
+            updateActive: true
+        });
+    }
 
-        updateOff = () => {
-            this.setState({
-                updateActive: false
-            });
-        }
+    updateOff = () => {
+        this.setState({
+            updateActive: false
+        });
+    }
 
-        componentDidMount() {
-            this.fetchPlaylists();
-        }
+    componentDidMount() {
+        this.fetchPlaylists();
+    };
 
     render() {
         return (
@@ -73,14 +71,14 @@ class Playlists extends React.Component<PlaylistProps, PlaylistState> {
                     <Container className='create-playlist'>
                         <Row>
                             <Col md="9">
-                                <Collections playlists={this.state.playlists} updatePlaylist={this.updatePlaylist} 
-                                updateOn={this.updateOn} fetchPlaylists={this.fetchPlaylists} token={this.props.token} />
+                                <Collections playlists={this.state.playlists} updatePlaylist={this.updatePlaylist}
+                                    updateOn={this.updateOn} fetchPlaylists={this.fetchPlaylists} token={this.props.token} />
                             </Col>
                             <Col md="3">
                                 <BuildList fetchPlaylists={this.fetchPlaylists} token={this.props.token} />
                             </Col>
-                        {this.updateActive ? <PlayUpdate updatePlaylist={this.playlistToUpdate} updateOff={this.updateActive.updateOff} 
-                        token={this.props.token} fetchPlaylists={this.fetchPlaylists} playlistToUpdate={this.playlistToUpdate} /> : <> </>}
+                            {this.state.updateActive && this.state.playlistToUpdate ? <PlayUpdate playlistToUpdate={this.state.playlistToUpdate}
+                                updateOff={this.updateOff} token={this.props.token} fetchPlaylists={this.fetchPlaylists} /> : <> </>}
                         </Row>
                     </Container>
                 </div>

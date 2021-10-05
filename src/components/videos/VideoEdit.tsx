@@ -62,7 +62,6 @@ class VideoEdit extends React.Component<VideoEditProps, VideoEditState> {
         this.props.updateOff()
     }
 
-
     render() {
         return (
             <div>

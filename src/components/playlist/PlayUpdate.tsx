@@ -1,20 +1,21 @@
 import React from 'react';
 import { Button, Form, FormGroup, Label, Input, Modal, ModalHeader, ModalBody } from 'reactstrap';
 import APIURL from '../../helpers/environment'
+import { playlist } from './Collections'
 
 interface PlaylistEditProps {
-    fetchPlaylists: Function,
+    fetchPlaylists: () => void,
     token: string,
-    updatePlaylist: Function,
     updateOff: () => void,
-    playlistToUpdate: object
+    playlistToUpdate: playlist
 }
 
 interface PlaylistEditState {
     editPublishDate: string,
     editTitle: string,
     editDescription: string,
-    editStatus: string
+    editStatus: string,
+    modalIsOpen: boolean
 }
 
 class PlayUpdate extends React.Component<PlaylistEditProps, PlaylistEditState> {
@@ -24,13 +25,14 @@ class PlayUpdate extends React.Component<PlaylistEditProps, PlaylistEditState> {
             editPublishDate: " ",
             editTitle: " ",
             editDescription: " ",
-            editStatus: " "
+            editStatus: " ",
+            modalIsOpen: true
         };
     }
 
     handlePlaylistUpdate = (e: React.FormEvent) => {
         e.preventDefault();
-        fetch(`${APIURL}/playlists/update/${this.props.playlistToUpdate}`, {
+        fetch(`${APIURL}/playlists/update/${this.props.playlistToUpdate.id}`, {
             method: 'PUT',
             body: JSON.stringify({
                 playlist: {
@@ -50,6 +52,13 @@ class PlayUpdate extends React.Component<PlaylistEditProps, PlaylistEditState> {
         })
     }
 
+    modalToggle = () => {
+        this.setState({
+            modalIsOpen: false
+        })
+        this.props.updateOff()
+    }
+
     render() {
         return (
             <div>
@@ -58,7 +67,7 @@ class PlayUpdate extends React.Component<PlaylistEditProps, PlaylistEditState> {
                     <ModalBody>
                         <Form onSubmit={this.handlePlaylistUpdate}>
                             <FormGroup>
-                                <Label htmlFor="time"> Edit Playlist Publish Date </Label>
+                                <Label htmlFor="date"> Edit Playlist Publish Date </Label>
                                 <Input onChange={(e) => this.setState({ editPublishDate: e.target.value })}
                                     type="text" name="editPublishDate" value={this.state.editPublishDate} />
                             </FormGroup>

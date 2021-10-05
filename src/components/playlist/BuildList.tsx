@@ -62,7 +62,7 @@ class BuildList extends React.Component<ListProps, ListState> {
     render() { 
         return (
             <div>
-                <h3 className='create-header'>Create a Playlist</h3>
+                <h3 className='create-header'>Create a Playlist </h3>
                 <Form className='create-playlist-form' onSubmit={this.handleSubmit}>
                     <FormGroup>
                         <Label htmlFor="date"> Playlist Publish Date </Label>
