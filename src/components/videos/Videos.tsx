@@ -5,26 +5,25 @@ import Feed from './Feed'; // Reads & Deletes Videos
 import VideoEdit from './VideoEdit'; // Updates Videos
 import './Videos.css'
 import APIURL from '../../helpers/environment'
+import { video } from './Feed'
 
 interface VideosProps {
     token: string
 }
 
 interface VideosState {
-    videos: [],
+    videos: video[],
     updateActive: true | false,
-    videoToUpdate: {}
+    videoToUpdate: video | null
 }
 
 class Videos extends React.Component<VideosProps, VideosState> {
-    updateActive: any;
-    videoToUpdate: any;
     constructor(props: VideosProps) {
         super(props);
         this.state = {
             videos: [],
             updateActive: false,
-            videoToUpdate: {}
+            videoToUpdate: null
         };
     }
 
@@ -43,7 +42,7 @@ class Videos extends React.Component<VideosProps, VideosState> {
             })
     }
 
-    updateVideo = (video: any) => {
+    updateVideo = (video: video): void => {
         this.setState({
             videoToUpdate: video
         })
@@ -78,8 +77,8 @@ class Videos extends React.Component<VideosProps, VideosState> {
                             <Col md="3">
                                 <Planner fetchVideos={this.fetchVideos} token={this.props.token} />
                             </Col>
-                            {this.updateActive ? <VideoEdit updateVideo={this.updateVideo}
-                            updateOff={this.updateActive.updateOff} token={this.props.token} fetchVideos={this.fetchVideos} videoToUpdate={this.videoToUpdate}  /> : <></>}
+                            {this.state.updateActive && this.state.videoToUpdate ? <VideoEdit videoToUpdate={this.state.videoToUpdate}
+                                updateOff={this.updateOff} token={this.props.token} fetchVideos={this.fetchVideos} /> : <></>}
                         </Row>
                     </Container>
                 </div>

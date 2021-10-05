@@ -1,15 +1,15 @@
 import React from 'react';
 import { Button, Form, FormGroup, Label, Input, Modal, ModalHeader, ModalBody } from 'reactstrap';
 import APIURL from '../../helpers/environment'
+import { video } from './Feed'
 
 interface VideoEditProps {
     // fetchVideos: Function,
     fetchVideos: () => void,
     token: string,
-    updateVideo: Function,
+   // updateVideo: () => void
     updateOff: () => void,
-    // videoToUpdate: object
-    videoToUpdate: { [key: string]: any }
+    videoToUpdate: video
 
 }
 
@@ -36,9 +36,10 @@ class VideoEdit extends React.Component<VideoEditProps, VideoEditState> {
     }
 
     handleVideoUpdate = (e: React.FormEvent) => {
+        console.info('working?')
     // handleVideoUpdate = (e: React.FormEvent) => {
         e.preventDefault();
-        fetch(`${APIURL}/videos/update/${this.props.videoToUpdate}`, {
+        fetch(`${APIURL}/videos/update/${this.props.videoToUpdate.id}`, {
         // fetch(`${APIURL}/videos/update/${this.props.updateVideo}`, {
             method: 'PUT',
             body: JSON.stringify({
@@ -71,9 +72,8 @@ class VideoEdit extends React.Component<VideoEditProps, VideoEditState> {
     render() {
         return (
             <div>
-                <Modal isOpen={this.state.modalIsOpen}
-                    toggle = {this.modalToggle}>
-                    <ModalHeader toggle= {this.modalToggle}>Update A Video</ModalHeader>
+                <Modal isOpen={true}>
+                    <ModalHeader>Update A Video</ModalHeader>
                     <ModalBody>
                         <Form onSubmit={this.handleVideoUpdate}>
                             <FormGroup>

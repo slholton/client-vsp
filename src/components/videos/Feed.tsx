@@ -3,7 +3,7 @@ import { Table, Button } from 'reactstrap';
 import APIURL from '../../helpers/environment'
 
 interface FeedProps {
-    videos: [],
+    videos: video[],
     token: string,
     fetchVideos: Function,
     updateVideo: Function,
@@ -14,17 +14,19 @@ interface FeedState {
 
 }
 
+export type video = {
+    publishDate?: any;
+    title?: any;
+    description?: any;
+    categoryId?: any;
+    playlist?: any;
+    id?: any;
+}
+
 class Feed extends React.Component<FeedProps, FeedState> {
-    video: any;
-    constructor(props: FeedProps) {
-        super(props);
-        this.state = {
 
-        };
-    }
-
-    deleteVideo = (id: any) => {
-        fetch(`${APIURL}/videos/delete/${this.video.id}`, {
+    deleteVideo = (video: video) => {
+        fetch(`${APIURL}/videos/delete/${video.id}`, {
             method: 'DELETE',
             headers: new Headers({
                 'Content-Type': 'application/json',
@@ -34,14 +36,7 @@ class Feed extends React.Component<FeedProps, FeedState> {
     }
 
     videoMapper = () => {
-        return this.props.videos.map((video: {
-            id: any;
-            publishDate?: any;
-            title?: any;
-            description?: any;
-            categoryId?: any;
-            playlist?: any;
-        }, index) => {
+        return this.props.videos.map((video: video, index: number) => {
             return (
                 <tr key={index}>
                     <th scope="row">{video.id}</th>
@@ -50,6 +45,10 @@ class Feed extends React.Component<FeedProps, FeedState> {
                     <td>{video.description}</td>
                     <td>{video.categoryId}</td>
                     <td>{video.playlist}</td>
+                    <td>
+                        <Button className='update-video-button' onClick={() => { this.props.updateVideo(video); this.props.updateOn() }}>Update Video</Button>
+                        <Button className="delete-video-button" onClick={() => { this.deleteVideo(video) }}>Delete Video</Button>
+                    </td>
                 </tr>
             )
         })
@@ -73,10 +72,7 @@ class Feed extends React.Component<FeedProps, FeedState> {
                             </tr>
                         </thead>
                         <tbody>{this.videoMapper()}</tbody>
-                        <td>
-                            <Button className='update-video-button' onClick={() => { this.props.updateVideo(this.video); this.props.updateOn() }}>Update Video</Button>
-                            <Button className="delete-video-button" onClick={() => { this.deleteVideo(this.video) }}>Delete Video</Button>
-                        </td>
+
                     </Table>
                 </div>
             </div>
