@@ -3,11 +3,14 @@ import { Button, Form, FormGroup, Label, Input, Modal, ModalHeader, ModalBody } 
 import APIURL from '../../helpers/environment'
 
 interface VideoEditProps {
-    fetchVideos: Function,
+    // fetchVideos: Function,
+    fetchVideos: () => void,
     token: string,
     updateVideo: Function,
     updateOff: () => void,
-    videoToUpdate: object
+    // videoToUpdate: object
+    videoToUpdate: { [key: string]: any }
+
 }
 
 interface VideoEditState {
