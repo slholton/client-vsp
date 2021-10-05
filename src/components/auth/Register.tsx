@@ -67,7 +67,7 @@ render() {
                     <Input onChange={(e) => this.setState({ password: e.target.value })}
                         type="password" name="password" value={this.state.password} />
                 </FormGroup>
-                <Button type="submit">Register</Button>
+                <Button className="register-button" type="submit">Register</Button>
             </Form>
             </Container>
         </div>

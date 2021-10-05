@@ -57,7 +57,7 @@ class Login extends React.Component<LoginProp, LoginState> {
                         <Input onChange={(e) => this.setState({ password: e.target.value })}
                             type="password" name="password" value={this.state.password} />
                     </FormGroup>
-                    <Button type="submit">Login</Button>
+                    <Button className="login-button" type="submit">Login</Button>
                 </Form>
                 </Container>
             </div>
