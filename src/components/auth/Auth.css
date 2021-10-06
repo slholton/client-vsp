@@ -1,10 +1,10 @@
 .auth {
-    background-image: url(../../assets/solo_succulent.JPG);
+    /* background-image: url(../../assets/plants2.jpeg); */
+    background-image: url(../../assets/plants-and-pen.jpeg);
     width: cover;
     height: 100vh;
     background-repeat: no-repeat;
-    background-size: cover;
-    background-position: top;
+    background-size: cover
   }
 
 .login-container {
